@@ -19,5 +19,8 @@
     "sqlite3": "^5.0.8",
     "utf-8-validate": "^5.0.9",
     "zlib-sync": "^0.1.7"
+  },
+  "devDependencies": {
+    "eslint": "^8.17.0"
   }
 }
