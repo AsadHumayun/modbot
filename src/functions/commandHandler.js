@@ -6,7 +6,10 @@
 
 import { join } from 'node:path';
 import { readdirSync } from 'node:fs';
+import { Collection } from 'discord.js';
 import { client } from '../index.js';
+
+client.commands = new Collection();
 
 const COMMANDS_PATH = join(process.cwd(), 'src', 'commands');
 const commandFiles = readdirSync(COMMANDS_PATH).filter(file => file.endsWith('.js'));
@@ -19,4 +22,4 @@ for (const file of commandFiles) {
 	client.commands.set(command.name, command);
 }
 
-console.info(`[CommandHandler] Successfully cached ${client.commands.size} commands in ${Date.now() - START_TIME} ms.`);
+console.info(`[CommandHandler] Successfully cached ${client.commands.size} commands in ${Date.now() - START_TIME} ms`);
