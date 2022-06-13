@@ -3,9 +3,9 @@ export default {
 	case: {
 		defaultReason: '*[Moderator did not specify a reason]*',
 	},
-
+	modlog: '985789719361245205',
 	opcodes: [
-		'WARNING_ADD',
-		'WARNING_REMOVE',
+		{ name: 'WARNING_ADD', severity: 'mild' },
+		{ name: 'WARNING_REMOVE', severity: 'none' },
 	],
 };
