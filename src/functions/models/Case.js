@@ -28,7 +28,7 @@ export function Case(sequelize) {
 			allowNull: false,
 		},
 		opcode: {
-			type: DataTypes.NUMBER,
+			type: DataTypes.STRING,
 		},
 		case_log_url: {
 			type: DataTypes.STRING,

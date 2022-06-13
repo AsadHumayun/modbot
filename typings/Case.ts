@@ -11,7 +11,7 @@ interface Case {
 	refers_cases: (number | string)[];
 	guild_id: Snowflake;
 	// Represents an action type.
-	opcode: number;
+	opcode: string;
 	case_log_url: string;
 	role_id: string[];
 };
