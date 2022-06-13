@@ -6,7 +6,7 @@ import { client } from '../client/initClient.js';
  * @returns {Promise<CaseData | undefined>}
  */
 export async function getCase(id) {
-	const _case = await client.data.cases.findByPk(id).catch(() => {return;});
+	const _case = await client.data.Cases.findByPk(id).catch(() => {return;});
 
 	return _case ?? undefined;
 }

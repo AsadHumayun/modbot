@@ -16,7 +16,7 @@ export async function updateCase(data) {
 		));
 	}
 
-	await client.data.cases.update(data, {
+	await client.data.Cases.update(data, {
 		where: {
 			id: data.id,
 		},

@@ -7,12 +7,9 @@ import { validateCaseData } from './validateCaseData.js';
  * @returns {void}
  */
 export async function createCase(data) {
-	const { count } = await client.data.cases.findAndCountAll();
-	data.id = count + 1;
-
 	const valid = await validateCaseData(data);
 	if (valid) {
-		await client.data.cases.create({
+		await client.data.Cases.create({
 			id: Number(data.id),
 			target: data.target,
 			executor: data.executor,
