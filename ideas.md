@@ -11,4 +11,4 @@ construct case embed function from data - useful for logging + `?case` command t
 because yes
 
 ## why is everything so slow?
-idk
+idk. If it's still slow evne on my home network, just map all of the functions onto the global client and remove all the manual imports for it
