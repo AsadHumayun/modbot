@@ -6,3 +6,9 @@
 
 ## todo: construct case embed function 
 construct case embed function from data - useful for logging + `?case` command to view case info
+
+## todo: add colors to global client config
+because yes
+
+## why is everything so slow?
+idk
