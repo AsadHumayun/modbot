@@ -6,7 +6,7 @@
 
 import { join } from 'node:path';
 import { readdirSync } from 'node:fs';
-import { client } from '../index.js';
+import { client } from '../../index.js';
 
 const EVENTS_PATH = join(process.cwd(), 'src', 'events');
 const eventFiles = readdirSync(EVENTS_PATH).filter(file => file.endsWith('.js'));

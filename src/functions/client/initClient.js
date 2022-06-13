@@ -1,5 +1,5 @@
-import { Client, Intents, Options } from "discord.js";
-import { config } from "dotenv";
+import { Client, Intents, Options } from 'discord.js';
+import { config } from 'dotenv';
 
 /**
  * The currently instantiated Discord Client.
@@ -16,15 +16,16 @@ const client = new Client({
 		GuildInviteManager: 0,
 		GuildBanManager: 0,
 	}),
-	allowedMentions: { parse: [], repliedUser: false },
+	allowedMentions: {
+		parse: [],
+		repliedUser: false,
+	},
 	intents: new Intents([
 		Intents.FLAGS.GUILDS,
 		Intents.FLAGS.GUILD_MESSAGES,
 		Intents.FLAGS.GUILD_MEMBERS,
 		Intents.FLAGS.DIRECT_MESSAGES,
 	]),
-	// enable commands in DMChannels
-	partials: ["CHANNEL"],
 });
 
 config();

@@ -18,6 +18,7 @@ export function initDb() {
 	const Cases = Case(sequelize);
 
 	if (process.argv.includes('--syncsql')) {
+		// necessary to construct tables
 		console.info('[Sequelize] Syncing database...');
 		sequelize.sync({ force: true });
 		console.info('[Sequelize] Successfully synced sequelize database');

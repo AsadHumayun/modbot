@@ -7,7 +7,7 @@
 import { join } from 'node:path';
 import { readdirSync } from 'node:fs';
 import { Collection } from 'discord.js';
-import { client } from '../index.js';
+import { client } from '../../index.js';
 
 client.commands = new Collection();
 
