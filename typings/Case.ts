@@ -13,4 +13,5 @@ interface Case {
 	// Represents an action type.
 	opcode: number;
 	case_log_url: string;
+	role_id: string[];
 };

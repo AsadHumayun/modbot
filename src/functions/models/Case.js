@@ -34,6 +34,9 @@ export function Case(sequelize) {
 			type: DataTypes.STRING,
 			allowNull: false,
 		},
+		role_id: {
+			type: DataTypes.STRING,
+		},
 	}, {
 		timestamps: true,
 	});
