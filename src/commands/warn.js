@@ -12,8 +12,10 @@ export default {
 		const member = await message.guild.members.fetch(args[0]);
 		if (!member) return message.reply('You must provide a valid member to warn');
 		const caseId = await getNewCaseId();
-		const [ refersCases, refIndex ] = getCaseReferences(args.slice(1));
-		const reason = args.slice(1).splice(refIndex, 1).join(' ') ?? client.config.case.defaultReason;
+		const sliced = args.slice(1);
+		const [ refersCases, refIndex ] = getCaseReferences(sliced);
+		sliced.splice(refIndex, 1);
+		const reason = sliced.join(' ') ?? client.config.case.defaultReason;
 		const caseData = {
 			id: caseId,
 			target: member.id,
