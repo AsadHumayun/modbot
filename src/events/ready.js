@@ -1,4 +1,4 @@
-import { setPresence } from '../functions/setPresence.js';
+import { setPresence } from '../functions/client/setPresence.js';
 
 export default {
 	name: 'ready',
