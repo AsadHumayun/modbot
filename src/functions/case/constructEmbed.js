@@ -24,14 +24,18 @@ export async function constructEmbed(caseData) {
 
 	const executor = await getUser(caseData.executor);
 	const target = await getUser(caseData.target);
+	const caseReferences = caseData.refersCases?.split(';');
 	const refs = [];
-	for (const ref of caseData.refersCases.split(';')) {
-		const _case = await client.data.Cases.findByPk(ref);
-		if (_case) {
-			refs.push([
-				ref,
-				_case.dataValues.case_log_url,
-			]);
+
+	if (caseReferences) {
+		for (const ref of caseReferences) {
+			const _case = await client.data.Cases.findByPk(ref);
+			if (_case) {
+				refs.push([
+					ref,
+					_case.dataValues.case_log_url,
+				]);
+			}
 		}
 	}
 
