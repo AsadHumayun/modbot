@@ -1,6 +1,7 @@
 import { MessageEmbed } from 'discord.js';
 import { client } from '../client/initClient.js';
 import { getUser } from '../message/getUser.js';
+import { getCaseReferences } from './getCaseReferences.js';
 
 /**
  * Generates a log embed regarding the case provided
@@ -25,28 +26,14 @@ export async function constructEmbed(caseData) {
 	const executor = await getUser(caseData.executor);
 	const target = await getUser(caseData.target);
 	const caseReferences = caseData.refersCases?.split(';');
-	const refs = [];
-
-	if (caseReferences) {
-		for (const ref of caseReferences) {
-			const _case = await client.data.Cases.findByPk(ref);
-			if (_case) {
-				refs.push([
-					ref,
-					_case.dataValues.case_log_url,
-				]);
-			}
-		}
-	}
-
-	return new MessageEmbed()
+	const baseEmbed = new MessageEmbed()
 		.setColor(clr)
 		.setDescription(
 			`
 **Member**: ${target.tag} (${target.id})
 **Action**: ${client.config.opcodes[Number(caseData.opcode)].name.toLowerCase().replace(/_/g, '.')}
 **Reason**: ${caseData.reason ?? client.config.case.defaultReason}
-${refs ? `**References**: ${refs.map((ref) => `[#${ref[0]}](${ref[1]}, "Details for referenced case: #${ref[0]}")`).join(', ')}` : 'NONEOENOENOE'}
+${caseReferences ? '**References**:' : ''}
 `,
 		)
 		.setAuthor({
@@ -57,4 +44,14 @@ ${refs ? `**References**: ${refs.map((ref) => `[#${ref[0]}](${ref[1]}, "Details 
 			text: `Case #${caseData.id}`,
 		})
 		.setTimestamp();
+
+	let refs;
+	if (caseReferences) {
+		refs = await getCaseReferences(caseReferences, null, 6000 - baseEmbed.length - 4096);
+		baseEmbed.setDescription(
+			`${baseEmbed.description}${refs.join(', ')}`,
+		);
+	}
+
+	return baseEmbed;
 }
