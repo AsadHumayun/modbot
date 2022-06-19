@@ -1,14 +1,12 @@
-## History command for a user
-`?history @User#1234 < optional number of cases to fetch >`
-
-## Remove all previous cases regarding a user
-`?clearhistory @User#1234 < optional number of cases to clear >` -> "Successfully removed 16 cases regarding 49398828576777739"
-
-## todo: construct case embed function 
-construct case embed function from data - useful for logging + `?case` command to view case info
-
-## todo: add colors to global client config
-because yes
-
-## why is everything so slow?
-idk. If it's still slow evne on my home network, just map all of the functions onto the global client and remove all the manual imports for it
+## TODO
+* Add optional referencing to `/case clear`
+* Add logging for `/case clear` command, OR make a portable custom logger (perhaps generate a new case for `/case clear`)
+* Timeout command
+* Ban command
+* Softban command
+* Lockdown channel command
+* Unlock channel command
+* ~~Case history command~~
+* ~~Remove all previous cases regarding a user command~~
+* ~~construct case embed function~~
+* ~~add colors to global client config~~
