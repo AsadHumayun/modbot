@@ -13,7 +13,7 @@ export async function modActionSuccessEmbed(caseData) {
 	const executor = await getUser(caseData.executor);
 
 	return new MessageEmbed()
-		.setColor('00f514')
+		.setColor(client.config.colors.green)
 		.setAuthor({
 			name: `Success | ${executor.tag}`,
 			iconURL: executor.displayAvatarURL(),

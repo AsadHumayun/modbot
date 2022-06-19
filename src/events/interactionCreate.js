@@ -7,8 +7,10 @@ export default {
 	once: false,
 	async execute(client, interaction) {
 		if (!interaction.isCommand()) return;
+
 		const command = client.commands.get(interaction.commandName) || client.commands.find((cmd) => cmd.aliases?.includes(interaction.commandName));
 		const slashCommandData = command.slashCommandData.toJSON();
+
 		if (slashCommandData.options.filter(({ type }) => type === 1).length >= 1) {
 			const { execute } = await import('file:///' + join(SUBCOMMAND_DIR, interaction.commandName, interaction.options.getSubcommand() + '.js'));
 			if (!execute) {
@@ -17,6 +19,7 @@ export default {
 					ephemeral: true,
 				});
 			}
+
 			try {
 				execute(interaction);
 			}
@@ -25,6 +28,7 @@ export default {
 					content: `Whoops, an error occurred :c\n\`${e}\``,
 					ephemeral: true,
 				});
+
 			}
 		}
 		else {

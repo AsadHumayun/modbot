@@ -32,7 +32,35 @@ const SlashCommandData = new SlashCommandBuilder()
 					.setDescription('The number of cases to show. Defaults to 25. Minimum is 1, maximum is 25')
 					.setRequired(false),
 			),
-	);
+	)
+	// clear history command
+	.addSubcommand(
+		sub => sub
+			.setName('clear')
+			.setDescription('Clears previous cases in context of a specified user')
+			.addUserOption(
+				opt => opt
+					.setName('target')
+					.setDescription('The target user whose cases should be removed')
+					.setRequired(true),
+			)
+			.addStringOption(
+				opt => opt
+					.setName('reason')
+					.setDescription('The reason for removing cases from the target user'),
+			)
+			.addIntegerOption(
+				opt => opt
+					.setName('limit')
+					.setDescription('Number of cases to remove. Leave unspecified to remove all cases')
+					.setMinValue(1),
+			)
+			.addStringOption(
+				opt => opt
+					.setName('reference')
+					.setDescription('Case IDs of previous cases to reference; separate multiple IDs with a comma')
+			)
+	)
 
 export {
 	SlashCommandData as CaseSlashCommandData,
