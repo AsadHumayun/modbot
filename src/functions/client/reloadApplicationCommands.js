@@ -13,15 +13,13 @@ export async function reloadApplicationCommands() {
 
 	try {
 		console.info('[Functions:reloadApplicationCommands] Started refreshing application commands');
-
 		await rest.put(Routes.applicationCommands(client.user.id), { body: commands });
-
 		console.info('[Functions:reloadApplicationCommands] Successfully reloaded application commands');
 	}
-	catch (error) {
+	catch (e) {
 		Promise.reject(
 			new Error(
-				`[Functions:reloadApplicationCommands] ${error.stack}`,
+				`[Functions:reloadApplicationCommands] ${e.stack}`,
 			),
 		);
 	}
