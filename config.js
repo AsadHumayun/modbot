@@ -8,7 +8,7 @@ export default {
 	},
 	modlog: '985789719361245205',
 	opcodes: [
-		// type severity = "" | "" | "" | "";
+		// type severity = "high" | "mild" | "none" | "";
 		{ name: 'WARNING_ADD', severity: 'mild' },
 		{ name: 'WARNING_REMOVE', severity: 'none' },
 		{ name: 'CASE_REMOVE', severity: 'none' },
