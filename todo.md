@@ -6,6 +6,7 @@
 	* Softban command
 	* Lockdown channel command
 	* Unlock channel command
+	* [major] [pain] Context option in commands (hyperlinks them, similar checking for char limit w/ refs)
 	* ~~Case history command~~
 	* ~~Remove all previous cases regarding a user command~~
 	* ~~construct case embed function~~
