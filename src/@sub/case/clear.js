@@ -29,14 +29,21 @@ export async function execute(interaction) {
 			**Moderator**: ${interaction.user.tag} (${interaction.user.id})
 			**Action**: ${interaction.client.config.opcodes[2].name.toLowerCase().replaceAll('_', '.')}
 			**Reason**: ${interaction.options.getString('reason') ?? interaction.client.config.case.defaultReason}
-			**Affected Cases**: `,
+			**Reference**: `,
 		);
 
-	const refs = await getCaseReferences(removeCases.map((x) => x[0]).slice(0, limit), null, 6000 - embed.length - 4096);
-
+	if (interaction.options.getString('reference')) {
+		const refs = await getCaseReferences(interaction.options.getString('reference').split(','), null, 6000 - embed.length - 4096);
+		embed.setDescription(
+			`${embed.description}${refs.join(', ')}`,
+		);
+	}
+	embed.description += '\n**Affected Cases**: ';
+	const affectedCases = await getCaseReferences(removeCases.map((x) => x[0]).slice(0, limit), null, 6000 - embed.length - 4096);
 	embed.setDescription(
-		`${embed.description}${refs.join(', ')}`,
+		`${embed.description}${affectedCases.join(', ')}`,
 	);
+
 
 	interaction.client.data.Cases.destroy({
 		where: {
