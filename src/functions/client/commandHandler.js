@@ -13,7 +13,7 @@ client.commands = new Collection();
 
 const COMMANDS_PATH = join(process.cwd(), 'src', 'commands');
 const commandFiles = readdirSync(COMMANDS_PATH).filter(file => file.endsWith('.js'));
-console.debug(`[CommandHandler] Using commands directory: ${COMMANDS_PATH}`);
+console.info(`[CommandHandler] Using commands directory: ${COMMANDS_PATH}`);
 
 const START_TIME = Date.now();
 for (const file of commandFiles) {

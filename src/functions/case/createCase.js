@@ -3,7 +3,7 @@ import { validateCaseData } from './validateCaseData.js';
 
 /**
  * Creates the case in the database and performs actions to validate input
- * @param {CaseData} data case data
+ * @param {import("../../../types/Case").Case} data case data
  * @returns {void}
  */
 export async function createCase(data) {

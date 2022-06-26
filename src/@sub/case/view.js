@@ -4,7 +4,7 @@ import { getCase } from '../../functions/case/getCase.js';
 
 /**
  * View subcommand for parent command "case"; refer to .../SlashCommandData/case.js for further information.
- * @param {Interaction} interaction The interaction that instantiated the request
+ * @param {import("discord.js").CommandInteraction} interaction The interaction that instantiated the request
  */
 export async function execute(interaction) {
 	const caseData = await getCase(interaction.options.getInteger('case_id'));

@@ -3,7 +3,7 @@ import { getUser } from '../../functions/message/getUser.js';
 
 /**
  * List subcommand for parent command "case"; refer to .../SlashCommandData/case.js for further information.
- * @param {Interaction} interaction The interaction that instantiated the request
+ * @param {import("discord.js").CommandInteraction} interaction The interaction that instantiated the request
  */
 export async function execute(interaction) {
 	const target = interaction.options.getUser('target');

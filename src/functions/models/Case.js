@@ -1,5 +1,10 @@
 import { DataTypes } from 'sequelize';
 
+/**
+ * Defines the 'case' model and returns it
+ * @param {import("sequelize").Sequelize} sequelize Sequelize instance
+ * @returns {import("sequelize").Model}
+ */
 export function Case(sequelize) {
 	return sequelize.define('cases', {
 		id: {

@@ -58,9 +58,9 @@ const SlashCommandData = new SlashCommandBuilder()
 			.addStringOption(
 				opt => opt
 					.setName('reference')
-					.setDescription('Case IDs of previous cases to reference; separate multiple IDs with a comma')
-			)
-	)
+					.setDescription('Case IDs of previous cases to reference; separate multiple IDs with a comma'),
+			),
+	);
 
 export {
 	SlashCommandData as CaseSlashCommandData,

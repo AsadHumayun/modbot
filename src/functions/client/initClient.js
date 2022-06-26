@@ -3,7 +3,7 @@ import { config } from 'dotenv';
 
 /**
  * The currently instantiated Discord Client.
- * @type {Discord.Client}
+ * @type {Client}
  */
 const client = new Client({
 	// Overriding the cache used in GuildManager, ChannelManager, GuildChannelManager, RoleManager

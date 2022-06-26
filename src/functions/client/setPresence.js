@@ -1,14 +1,11 @@
 /**
  * Sets the instantiated Discord client's presence.
  */
-
-// eslint-disable-next-line no-unused-vars
-import * as Discord from 'discord.js';
 import { client } from './initClient.js';
 
 /**
  * Updates the client user's presence.
- * @param {Discord.PresenceData} data
+ * @param {import("discord.js").PresenceData} data
  * @returns {void}
  */
 export function setPresence(data) {

@@ -4,7 +4,7 @@ import { getUser } from './getUser.js';
 
 /**
  * Generates a success embed for moderation actions.
- * @param {CaseData} caseData Data for the case
+ * @param {import("../../../types/Case").Case} caseData Data for the case
  */
 export async function modActionSuccessEmbed(caseData) {
 	if (!caseData) Promise.reject(new ReferenceError('[Functions:message:modActionSuccessEmbed] parameter \'caseData\' not present'));

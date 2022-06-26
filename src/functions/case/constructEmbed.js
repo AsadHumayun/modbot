@@ -5,7 +5,7 @@ import { getCaseReferences } from './getCaseReferences.js';
 
 /**
  * Generates a log embed regarding the case provided
- * @param {CaseData} caseData Data regarding the case that must be used to generate the embed
+ * @param {import("../../../types/Case").Case} caseData Data regarding the case that must be used to generate the embed
  * @returns {MessageEmbed}
  */
 export async function constructEmbed(caseData) {
@@ -33,8 +33,7 @@ export async function constructEmbed(caseData) {
 **Member**: ${target.tag} (${target.id})
 **Action**: ${client.config.opcodes[Number(caseData.opcode)].name.toLowerCase().replace(/_/g, '.')}
 **Reason**: ${caseData.reason ?? client.config.case.defaultReason}
-${caseReferences ? '**References**:' : ''}
-`,
+${caseReferences.length > 0 ? '**References**:' : ''}`,
 		)
 		.setAuthor({
 			name: `${executor.tag} (${executor.id})`,

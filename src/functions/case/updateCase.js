@@ -3,7 +3,7 @@ import { getCase } from './getCase.js';
 
 /**
  * Updates a case in the database.
- * @param {PartialCaseData} data partial case data (only expected to provide properties that need to change)
+ * @param {Partial<import("../../../types/Case").Case>} data partial case data (only expected to provide properties that need to change)
  * @danger partial case data passed here will not be validated
  */
 export async function updateCase(data) {

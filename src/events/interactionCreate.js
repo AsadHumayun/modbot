@@ -19,7 +19,6 @@ export default {
 					ephemeral: true,
 				});
 			}
-
 			try {
 				execute(interaction);
 			}
@@ -28,7 +27,6 @@ export default {
 					content: `Whoops, an error occurred :c\n\`${e}\``,
 					ephemeral: true,
 				});
-
 			}
 		}
 		else {

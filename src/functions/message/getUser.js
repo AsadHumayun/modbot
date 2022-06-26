@@ -13,7 +13,7 @@ function _getId(mention) {
 /**
  * Fetches a Discord User either by ID or raw mention
  * @param {string} str The mention - either ID or raw <@(!)id>
- * @returns {Promise<Discord.User>} Discord user
+ * @returns {Promise<import("discord.js").User>} Discord user
  */
 export async function getUser(str) {
 	if (!str) return;
