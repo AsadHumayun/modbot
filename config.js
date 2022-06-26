@@ -5,15 +5,16 @@ export default {
 	},
 	colors: {
 		green: '00f514',
+		red: '#da0000',
 	},
 	modlog: '985789719361245205',
 	opcodes: [
 		/* type severity = "high" | "mild" | "none" | ""; */
 		{ name: 'WARNING_ADD', severity: 'mild' },
-		{ name: 'WARNING_REMOVE', severity: 'none' },
+		{ name: 'WARNING_REMOVE', severity: 'none', rel: 1 },
 		{ name: 'CASE_REMOVE', severity: 'none' },
 		{ name: 'TIMEOUT_SET', severity: 'mild' },
-		{ name: 'TIMEOUT_REMOVE', severity: '' },
+		{ name: 'TIMEOUT_REMOVE', severity: '', rel: 3 },
 	],
 
 	emojis: {
