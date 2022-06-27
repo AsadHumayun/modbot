@@ -33,7 +33,7 @@ export function Case(sequelize) {
 			allowNull: false,
 		},
 		opcode: {
-			type: DataTypes.STRING,
+			type: DataTypes.NUMBER,
 		},
 		case_log_url: {
 			type: DataTypes.STRING,
