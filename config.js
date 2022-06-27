@@ -1,12 +1,30 @@
 export default {
 	prefix: '?',
+	display: '974480619432206336',
 	case: {
 		defaultReason: '*[Moderator did not specify a reason]*',
+	},
+	roles: {
+		muted: '991102197918085181',
+		/**
+		 * @todo
+		 */
+		modRoles: [],
 	},
 	colors: {
 		green: '00f514',
 		red: '#da0000',
+		orange: '#f59300',
 	},
+	channels: {
+		welcome: '990934663147188254',
+		modlog: '985789719361245205',
+		memberlog: '991088774857490503',
+		permlog: '991091202478731337',
+	},
+	defaultRoles: [
+		'990957499190489159',
+	],
 	modlog: '985789719361245205',
 	opcodes: [
 		/* type severity = "high" | "mild" | "none" | ""; */
@@ -15,8 +33,11 @@ export default {
 		{ name: 'CASE_REMOVE', severity: 'none' },
 		{ name: 'TIMEOUT_SET', severity: 'mild' },
 		{ name: 'TIMEOUT_REMOVE', severity: '', rel: 3 },
+		{ name: 'ANTI_RAID_TIMEOUT', severity: 'high' },
+		{ name: 'role', severity: 'none' },
+		{ name: 'unrole', severity: 'none' },
 	],
-
+	guildId: '980833164945657878',
 	emojis: {
 		verified: '<:Verified:990362737500622858>',
 		verifiedCDN: 'https://cdn.discordapp.com/attachments/985789702302994432/990371778327093268/Verified.png',
