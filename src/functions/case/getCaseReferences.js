@@ -7,7 +7,7 @@ import { client } from '../client/initClient.js';
  * @param {number[]} cases array of case IDs to compile references for
  * @param {?number} prevChars amount of chars that will have preceded this and should be included in the char count
  * @param {number} charLimit char limit - once reached, appends "..." and leaves it at that.
- * @returns {string}
+ * @returns {Promise<string>}
  */
 export async function getCaseReferences(cases, prevChars = 0, charLimit) {
 	const final = [];

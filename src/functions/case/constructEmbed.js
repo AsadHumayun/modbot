@@ -6,7 +6,7 @@ import { getCaseReferences } from './getCaseReferences.js';
 /**
  * Generates a log embed regarding the case provided
  * @param {import("../../../types/Case").Case} caseData Data regarding the case that must be used to generate the embed
- * @returns {MessageEmbed}
+ * @returns {Promise<MessageEmbed>}
  */
 export async function constructEmbed(caseData) {
 	const severity = client.config.opcodes[Number(caseData.opcode)].severity;
@@ -33,7 +33,7 @@ export async function constructEmbed(caseData) {
 **Member**: ${target.tag} (${target.id})
 **Action**: ${client.config.opcodes[Number(caseData.opcode)].name.toLowerCase().replace(/_/g, '.')}
 **Reason**: ${caseData.reason ?? client.config.case.defaultReason}
-${caseReferences.length > 0 ? '**References**:' : ''}`,
+${caseReferences?.length > 0 ? '**References**:' : ''}`,
 		)
 		.setAuthor({
 			name: `${executor.tag} (${executor.id})`,
