@@ -5,7 +5,8 @@
 import Sequelize from 'sequelize';
 import { join } from 'node:path';
 
-import { Case } from '../models/Case.js';
+import { Case } from '../../models/Case.js';
+import { User } from '../../models/User.js';
 
 export function initDb() {
 	const sequelize = new Sequelize('database', 'user', 'password', {
@@ -16,6 +17,7 @@ export function initDb() {
 	});
 
 	const Cases = Case(sequelize);
+	const Users = User(sequelize);
 
 	if (process.argv.includes('--syncsql')) {
 		// necessary to construct tables
@@ -27,5 +29,6 @@ export function initDb() {
 	return Object.freeze({
 		sequelize,
 		Cases,
+		Users,
 	});
 }
