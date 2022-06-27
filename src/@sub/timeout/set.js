@@ -29,7 +29,7 @@ export async function execute(interaction) {
 	}
 	catch (e) {
 		await interaction.reply({
-			content: `Unable to timeout user ${target.user.tag} (${target.id}) due to a lack of sufficient permissions`,
+			content: `Unable to timeout user ${target.user.tag} (${target.id}) due to a lack of sufficient permissions or invalid minutes specified`,
 			ephemeral: true,
 		});
 
