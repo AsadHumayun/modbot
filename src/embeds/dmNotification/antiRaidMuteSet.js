@@ -1,5 +1,4 @@
 import { MessageEmbed } from 'discord.js';
-import { client } from '../../functions/client/initClient.js';
 import { applyGlobals } from './.global.js';
 
 /**
@@ -15,9 +14,7 @@ export function antiRaidMuteSet(target, executor, guild, display, caseData) {
 	return applyGlobals(
 		new MessageEmbed()
 			.setColor('#da0000')
-			.setDescription(`You have received a 100000000 minute mute from ${guild.name} because of "[automatic-mute]: Anti-raid"`)
-			.addField('Moderator', client.user.tag)
-			.addField('Reason', `Your account was flagged as a potential threat to our server. If you believe that you were muted erroneously, please contact \`${display.tag}\`.`),
+			.setDescription(`You have received a 100000000 minute mute from ${guild.name} because of "[automatic-mute]: Anti-raid"`),
 		target, executor, caseData,
 	);
 }
