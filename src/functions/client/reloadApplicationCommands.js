@@ -5,7 +5,7 @@ import { client } from './initClient.js';
 /**
  * Updates global `ApplicationCommands` slash commands with Discord using REST.
  * Adapted from {@link https://discordjs.guide/interactions/slash-commands.html#registering-slash-commands}
- * @returns {void}
+ * @returns {Promise<void>}
  */
 export async function reloadApplicationCommands() {
 	const rest = new REST({ version: '9' }).setToken(process.env.token);

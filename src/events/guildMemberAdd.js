@@ -9,6 +9,9 @@ import { logCase } from '../functions/case/logCase.js';
 import { constructEmbed } from '../functions/case/constructEmbed.js';
 import { antiRaidMuteSet } from '../embeds/dmNotification/antiRaidMuteSet.js';
 
+/**
+ * @type {import("../../types/Event").Event}
+ */
 export default {
 	name: 'guildMemberAdd',
 	once: false,
@@ -71,7 +74,7 @@ export default {
 		else {
 			channel.send({ content: `Welcome ${member} to ${member.guild.name}!` });
 			metadata.push('cl');
-			await client.config.Users.update({
+			await client.data.Users.update({
 				metadata: metadata.join(';'),
 			}, {
 				where: {
@@ -92,7 +95,7 @@ export default {
 				id: caseId,
 				target: member.id,
 				executor: client.user.id,
-				reason: '[AUTOMOD] [auto] anti-raid detection',
+				reason: `Your account was flagged as a potential threat to our server. If you believe that you were muted erroneously, please contact \`${owner.tag}\`.`,
 				guildId: member.guild.id,
 				opcode: 5,
 			};
@@ -104,7 +107,7 @@ export default {
 					new MessageEmbed()
 						.setColor(client.config.colors.red)
 						.setDescription(
-							`${member.user.tag} has been given a 100000000 minute timeout for "anti-raid" and was sent the following message:`,
+							`${member.user.tag} has been given a 100000000 minute mute for "anti-raid" and was sent the following message:`,
 						),
 					antiRaidMuteSet(member.user, client.user, member.guild, owner, case_),
 				],
@@ -116,13 +119,13 @@ export default {
 			] })
 				.catch(() => {return;});
 		}
-		client.channels.cache.get(client.config.channels.memberLog).send({ embeds: [
+		client.channels.cache.get(client.config.channels.memberlog).send({ embeds: [
 			new MessageEmbed()
-				.setTimestamp()
 				.setColor('#00FF0C')
 				.setDescription(`Created <t:${Math.trunc(member.user.createdAt.getTime() / 1000)}:R>`)
 				.setAuthor({ name: member.user.tag, iconURL: member.user.displayAvatarURL({ dynamic: true }) })
-				.setFooter({ text: `Member Joined • ID: ${member.user.id}`, iconURL: member.user.displayAvatarURL({ dynamic: true }) }),
+				.setFooter({ text: `Member Joined • ID: ${member.user.id}` })
+				.setTimestamp(),
 		] });
 	},
 };

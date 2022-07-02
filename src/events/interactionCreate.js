@@ -2,6 +2,9 @@ import { join } from 'node:path';
 
 const SUBCOMMAND_DIR = join(process.cwd(), 'src', '@sub');
 
+/**
+ * @type {import("../../types/Event").Event}
+ */
 export default {
 	name: 'interactionCreate',
 	once: false,
