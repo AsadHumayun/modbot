@@ -12,7 +12,8 @@ export default {
 		modRoles: [],
 	},
 	colors: {
-		green: '00f514',
+		invis: '#36393e',
+		green: '#00f514',
 		red: '#da0000',
 		orange: '#f59300',
 	},
@@ -21,6 +22,7 @@ export default {
 		modlog: '985789719361245205',
 		memberlog: '991088774857490503',
 		permlog: '991091202478731337',
+		msglog: '992597659439333439',
 	},
 	defaultRoles: [
 		'990957499190489159',
@@ -34,8 +36,8 @@ export default {
 		{ name: 'TIMEOUT_SET', severity: 'mild' },
 		{ name: 'TIMEOUT_REMOVE', severity: '', rel: 3 },
 		{ name: 'ANTI_RAID_TIMEOUT', severity: 'high' },
-		{ name: 'role', severity: 'none' },
-		{ name: 'unrole', severity: 'none' },
+		{ name: 'ROLE', severity: 'none' },
+		{ name: 'UNROLE', severity: 'none' },
 	],
 	guildId: '980833164945657878',
 	emojis: {
