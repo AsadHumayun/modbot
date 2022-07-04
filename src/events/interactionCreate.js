@@ -33,6 +33,8 @@ export default {
 			}
 		}
 		else {
+			// No sub command
+			// Executing (command)
 			try {
 				command.execute(client, interaction);
 			}
