@@ -3,6 +3,7 @@ import { SlashCommandBuilder } from '@discordjs/builders';
 const SlashCommandData = new SlashCommandBuilder()
 	.setName('timeout')
 	.setDescription('`set` or `remove` a timeout for a given user')
+	.setDMPermission(false)
 	.addSubcommand(
 		cmd => cmd
 			.setName('set')

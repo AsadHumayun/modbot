@@ -3,6 +3,7 @@ import { SlashCommandBuilder } from '@discordjs/builders';
 const SlashCommandData = new SlashCommandBuilder()
 	.setName('warn')
 	.setDescription('Give a member of this server a warning for breaking the rules')
+	.setDMPermission(false)
 	.addUserOption(
 		userOpt => userOpt
 			.setName('target')
