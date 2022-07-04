@@ -10,6 +10,6 @@ export default {
 	async execute(client, debug) {
 		const webh = new WebhookClient({ url: config.debugger['@link'] });
 
-		webh.send('`' + debug + '`');
+		webh.send('`' + debug + '`').catch(() => {return;});
 	},
 };
