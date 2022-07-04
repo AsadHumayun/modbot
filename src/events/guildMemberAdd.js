@@ -1,11 +1,11 @@
 import { setTimeout } from 'node:timers/promises';
+import { logCase } from '../functions/case/logCase.js';
 import { MessageEmbed, Permissions } from 'discord.js';
 import { getUser } from '../functions/message/getUser.js';
-import { arrayToMatrix } from '../utils/array/arrayToMatrix.js';
-import { getUserData } from '../functions/userData/getUserData.js';
-import { getNewCaseId } from '../functions/case/getNewCaseId.js';
 import { createCase } from '../functions/case/createCase.js';
-import { logCase } from '../functions/case/logCase.js';
+import { arrayToMatrix } from '../utils/array/arrayToMatrix.js';
+import { getNewCaseId } from '../functions/case/getNewCaseId.js';
+import { getUserData } from '../functions/userData/getUserData.js';
 import { constructEmbed } from '../functions/case/constructEmbed.js';
 import { antiRaidMuteSet } from '../embeds/dmNotification/antiRaidMuteSet.js';
 
