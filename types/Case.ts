@@ -1,4 +1,4 @@
-import type { Client, Snowflake } from 'discord.js';
+import type { Snowflake } from 'discord.js';
 
 interface Case {
 	/**
@@ -19,6 +19,7 @@ interface Case {
 	reason: string;
 	/**
 	 * References made to other cases.
+	 * Joint by ';'
 	 */
 	refersCases?: string;
 	/**
