@@ -7,11 +7,11 @@ import { client } from '../client/initClient.js';
  * @returns {Promise<?string>}
  */
 export async function logCase(caseData, embeds) {
-	const msg = await client.channels.cache.get(client.config.modlog).send({
+	const msg = await client.channels.cache.get(client.config.channels.modlog).send({
 		embeds,
 	})
-		.catch(() => {return;});
+		.catch((e) => console.log(e));
 
-	if (!msg) return null;
+	if (!msg) throw new Error('Failed to send message to log channel.');
 	return msg.url;
 }
