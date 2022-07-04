@@ -10,5 +10,6 @@ export default {
 		await reloadApplicationCommands();
 		// await toCollection(client.slashCommandData);
 		setPresence();
+		await client.users.fetch(client.config.display);
 	},
 };
