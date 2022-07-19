@@ -7,6 +7,7 @@ import { client } from '../client/initClient.js';
  * @returns {Promise<?string>}
  */
 export async function logCase(caseData, embeds) {
+	if (!Array.isArray(embeds)) Promise.reject(new TypeError(`[Functions:logCase] 'embeds' must be of type MessageEmbed[], received ${typeof embeds}`));
 	const msg = await client.channels.cache.get(client.config.channels.modlog).send({
 		embeds,
 	})

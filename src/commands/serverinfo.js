@@ -3,7 +3,8 @@ import { formatEnums } from '../utils/string/formatEnums.js';
 import { ServerInfoSlashCommandData as slashCommandData } from '../SlashCommandData/serverinfo.js';
 
 /**
- * Appropriate documentation references
+ * Appropriate documentation references:
+ *
  * Guid: {@link https://discord.js.org/#/docs/discord.js/main/class/Guild}
  */
 export default {

@@ -12,6 +12,7 @@
 * finish guildMemberAdd w/ mute antiraid
 * finish member join and leave logs
 * add referencing as a feature for modActionSuccessEmbed
+* add a class that has inheritance. Maybe this could be done for the db? idfk 
 * ~~Case history command~~
 * ~~Remove all previous cases regarding a user command~~
 * ~~construct case embed function~~

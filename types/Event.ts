@@ -10,7 +10,7 @@ interface Event {
 	 */
 	once: boolean;
 	/**
-	 * 
+	 * Function that is executed upon the event
 	 * @param client The currently instantiated Discord client
 	 * @param args The arugments to run this event with (these may vary depending on the event selected)
 	 */

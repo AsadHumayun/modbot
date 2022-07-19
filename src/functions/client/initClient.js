@@ -1,5 +1,5 @@
 import { Client, Intents, Options } from 'discord.js';
-import { config } from 'dotenv';
+import { config as setupEnvironmentVariables } from 'dotenv';
 
 /**
  * The currently instantiated Discord Client.
@@ -28,7 +28,7 @@ const client = new Client({
 	]),
 });
 
-config();
+setupEnvironmentVariables();
 client.login(process.env.token);
 
 export { client };

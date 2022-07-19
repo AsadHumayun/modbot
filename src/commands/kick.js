@@ -1,10 +1,10 @@
-import { KickSlashCommandData as slashCommandData } from '../SlashCommandData/kick.js';
-import { getNewCaseId } from '../functions/case/getNewCaseId.js';
-import { createCase } from '../functions/case/createCase.js';
 import { logCase } from '../functions/case/logCase.js';
 import { kick } from '../embeds/dmNotification/kick.js';
+import { createCase } from '../functions/case/createCase.js';
+import { getNewCaseId } from '../functions/case/getNewCaseId.js';
 import { constructEmbed } from '../functions/case/constructEmbed.js';
 import { modActionSuccessEmbed } from '../functions/message/modActionSuccessEmbed.js';
+import { KickSlashCommandData as slashCommandData } from '../SlashCommandData/kick.js';
 
 export default {
 	slashCommandData,
