@@ -3,8 +3,7 @@ import { formatEnums } from '../utils/string/formatEnums.js';
 import { ServerInfoSlashCommandData as slashCommandData } from '../SlashCommandData/serverinfo.js';
 
 /**
- * Appropriate documentation references:
- *
+ * Appropriate documentation references
  * Guid: {@link https://discord.js.org/#/docs/discord.js/main/class/Guild}
  */
 export default {
@@ -21,8 +20,8 @@ export default {
 			{
 				name: 'Owner',
 				// Discord timestamps are UNIX timestamps, so divide by 1000
-				value:
-`${owner.tag}
+				value: `
+${owner.tag}
 Guild created
 <t:${Math.trunc(interaction.guild.createdAt.getTime() / 1000)}:R>`,
 			},
@@ -33,7 +32,6 @@ Guild created
 **${interaction.guild.channels.cache.filter(({ type }) => ['GUILD_VOICE', 'GUILD_STAGE_VOICE'].includes(type)).size}** Voice,
 **${interaction.guild.channels.cache.size}** Total.
 ${threads?.size >= 1 ? `**${threads.size}** Active Threads.` : ''}
-
 				`,
 			},
 			{
