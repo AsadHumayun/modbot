@@ -7,62 +7,45 @@ export default {
 	name: 'userinfo',
 	async execute(client, interaction) {
 		const member = interaction.options.getMember('target') || interaction.member;
-		/*
-		/**
-		 * Returns an array of EmbedFieldData that can be sent to Discord, containing
-		 * user-only properties. As these are present on both the guild member
-		 * and user, having a function generate these will help keep the code clean.
-		 * @param {import("discord.js").User} user target user
-		 * @returns {import("discord.js").EmbedFieldData[]}
-		 *//*
-		const userProps = (user) => {
-			return [
-				{
-					name: 'Joined Discord',
-					value: `${user.createdAt.toISOString()}\n<t:${Math.trunc(user.createdAt.getTime() / 1000)}:R>`,
-					inline: true,
-				},
-			];
-		};
+		const cases = await client.data.Cases.findAndCountAll({
+			where: {
+				target: member.user.id,
+			},
+		});
 
-		if (!member) {
-			/* The use is not a GuildMember instance */
-			/*
-			const user = interaction.options.getUser('target');
-			return await interaction.reply({
-				embeds: [
-					new MessageEmbed()
-						.setColor(client.config.colors.invis)
-						.setDescription('The user is not a member of this server and therefore only limited information is displayed.')
-						.setAuthor({
-							name: user.bot ? user.tag + ' [BOT]' : user.tag,
-							iconURL: user.displayAvatarURL({ dynamic: true }),
-						})
-						.addFields(userProps(user))
-						.setTimestamp(),
-				],
+		const caseInfo = new Object();
+		for (const { name } of client.config.opcodes) {
+			caseInfo[name] = 0;
+			cases.rows.forEach(({ opcode }) => {
+				const actionName = client.config.opcodes[opcode].name;
+				if (name === actionName) caseInfo[name]++;
 			});
 		}
-		*/
+
+		const moderationFieldValue = `
+${member.kickable ? 'Kickable' : 'Not Kickable'}
+${member.manageable ? 'Manageable' : 'Not Manageable'}
+${member.moderatable ? 'Moderatable' : 'Not Moderatable'}
+${member.communicationDisabledUntil ? 'Communications Disabled' : ''}
+`;
 		// GuildMember
 		return await interaction.reply({
 			embeds: [
 				new MessageEmbed()
-					.setColor('BLUE')
+					.setColor(member.displayHexColor)
 					.setAuthor({
 						name: member.user.bot ? member.user.tag + ' [BOT]' : member.user.tag,
 						iconURL: member.user.displayAvatarURL({ dynamic: true }),
 					})
-					// .addFields(userProps(member.user))
 					.addFields([
 						{
 							name: 'Joined Discord',
-							value: `${member.user.createdAt.toISOString()}\n<t:${Math.trunc(member.user.createdAt.getTime() / 1000)}:R>`,
+							value: `<t:${Math.trunc(member.user.createdAt.getTime() / 1000)}:R>`,
 							inline: true,
 						},
 						{
 							name: 'Joined Server',
-							value: `${member.joinedAt.toISOString()}\n<t:${Math.trunc(member.joinedAt.getTime() / 1000)}:R>`,
+							value: `<t:${Math.trunc(member.joinedAt.getTime() / 1000)}:R>`,
 							inline: true,
 						},
 						{
@@ -81,8 +64,37 @@ export default {
 						},
 						{
 							name: 'Highest Role',
-							value: member.roles.cache.highest.toString() || 'None',
-						}
+							value: member.roles.highest.toString() || 'None',
+							inline: true,
+						},
+						{
+							name: 'Display Name',
+							value: member.displayName,
+							inline: true,
+						},
+						{
+							name: 'Moderation',
+							value: moderationFieldValue || 'No information available.',
+							inline: true,
+						},
+						{
+							name: 'Previous Cases',
+							value: `
+${Object.entries(caseInfo).map(([key, amount], index) => {
+		if (amount <= 0) return false;
+		if (index === Object.entries(caseInfo).length - 1) {
+			return `**${amount}** ${formatEnums([key])},`;
+		}
+		else {
+			return `**${amount}** ${formatEnums([key])}`;
+		}
+	})
+		.filter((v) => v !== false)
+		.join(',\n')}
+**${cases.count}** Total.
+							`,
+							inline: true,
+						},
 					]),
 			],
 		});
