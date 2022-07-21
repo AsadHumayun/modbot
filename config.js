@@ -38,7 +38,7 @@ export default {
 		{ name: 'ANTI_RAID_TIMEOUT', severity: 'high' },
 		{ name: 'ROLE', severity: 'none' },
 		{ name: 'UNROLE', severity: 'none' },
-		{ name: 'GUILDMEMBER.KICK', severity: 'mild' },
+		{ name: 'GUILDMEMBER_KICK', severity: 'mild' },
 	],
 	guildId: '980833164945657878',
 	emojis: {
