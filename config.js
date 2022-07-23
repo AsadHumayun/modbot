@@ -39,6 +39,7 @@ export default {
 		{ name: 'ROLE', severity: 'none' },
 		{ name: 'UNROLE', severity: 'none' },
 		{ name: 'GUILDMEMBER_KICK', severity: 'mild' },
+		{ name: 'GUILDMEMBER_SOFTBAN', severity: 'mild' },
 	],
 	guildId: '980833164945657878',
 	emojis: {
