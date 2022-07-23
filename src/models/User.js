@@ -20,13 +20,13 @@ export function User(sequelize) {
 				type: STRING,
 			},
 			roles: {
-				type: TEXT,
+				type: TEXT('long'),
 			},
 			chnlp: {
-				type: TEXT,
+				type: TEXT('long'),
 			},
 			metadata: {
-				type: TEXT,
+				type: TEXT('long'),
 			},
 		}, {
 			timestamps: true,
