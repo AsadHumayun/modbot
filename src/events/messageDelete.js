@@ -1,4 +1,4 @@
-import { MessageEmbed } from 'discord.js';
+import { EmbedBuilder } from 'discord.js';
 import { arrayToMatrix } from '../utils/array/arrayToMatrix.js';
 
 /**
@@ -24,7 +24,7 @@ export default {
 		let embeds = [];
 		for (const image of images) {
 			embeds.push(
-				new MessageEmbed()
+				new EmbedBuilder()
 					.setColor('#da0000')
 					.setAuthor({ name: `${message.author.tag} (${message.author.id})`, iconURL: message.author.displayAvatarURL({ dynamic: true }) })
 					.setDescription(`Image ${image.index + 1} of ${images.length} sent in ${message.channel}.`)
@@ -35,7 +35,7 @@ export default {
 		}
 
 		embeds = arrayToMatrix(embeds, 10);
-		const embed = new MessageEmbed()
+		const embed = new EmbedBuilder()
 			.setColor(client.config.colors.red)
 			.setTitle(`Message sent by ${message.author.tag} (${message.author.id}) deleted in #${message.channel.name}`)
 			.setDescription(message.content)

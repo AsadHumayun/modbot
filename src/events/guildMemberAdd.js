@@ -1,6 +1,6 @@
 import { setTimeout } from 'node:timers/promises';
 import { logCase } from '../functions/case/logCase.js';
-import { MessageEmbed, Permissions } from 'discord.js';
+import { EmbedBuilder, PermissionsBitField } from 'discord.js';
 import { getUser } from '../functions/message/getUser.js';
 import { createCase } from '../functions/case/createCase.js';
 import { arrayToMatrix } from '../utils/array/arrayToMatrix.js';
@@ -49,9 +49,9 @@ export default {
 				try {
 					console.log(x);
 					const permissions = {};
-					const deny = Object.entries(new Permissions(BigInt(Number(x[1]))).serialize()).filter((s) => s[1] === true).forEach((s) => permissions[s[0]] = false);
-					const allow = Object.entries(new Permissions(BigInt(Number(x[2]))).serialize()).filter((s) => s[1] === true).forEach((s) => permissions[s[0]] = true);
-					Object.keys(Permissions.FLAGS).forEach((flag) => {
+					const deny = Object.entries(new PermissionsBitField(BigInt(Number(x[1]))).serialize()).filter((s) => s[1] === true).forEach((s) => permissions[s[0]] = false);
+					const allow = Object.entries(new PermissionsBitField(BigInt(Number(x[2]))).serialize()).filter((s) => s[1] === true).forEach((s) => permissions[s[0]] = true);
+					Object.keys(PermissionsBitField.Flags).forEach((flag) => {
 						if (!Object.keys(permissions).includes(flag)) permissions[flag] = null;
 						console.debug(`Set permissions.${flag} as null`);
 					});
@@ -104,7 +104,7 @@ export default {
 			await createCase(case_);
 			await client.channels.cache.get(client.config.channels.welcome).send({
 				embeds: [
-					new MessageEmbed()
+					new EmbedBuilder()
 						.setColor(client.config.colors.red)
 						.setDescription(
 							`${member.user.tag} has been given a 100000000 minute mute for "anti-raid" and was sent the following message:`,
@@ -120,7 +120,7 @@ export default {
 				.catch(() => {return;});
 		}
 		client.channels.cache.get(client.config.channels.memberlog).send({ embeds: [
-			new MessageEmbed()
+			new EmbedBuilder()
 				.setColor('#00FF0C')
 				.setDescription(`Created <t:${Math.trunc(member.user.createdAt.getTime() / 1000)}:R>`)
 				.setAuthor({ name: member.user.tag, iconURL: member.user.displayAvatarURL({ dynamic: true }) })

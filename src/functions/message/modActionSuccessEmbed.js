@@ -1,4 +1,4 @@
-import { MessageEmbed } from 'discord.js';
+import { EmbedBuilder } from 'discord.js';
 import { client } from '../client/initClient.js';
 import { getUser } from './getUser.js';
 
@@ -12,7 +12,7 @@ export async function modActionSuccessEmbed(caseData) {
 	const target = await getUser(caseData.target);
 	const executor = await getUser(caseData.executor);
 
-	return new MessageEmbed()
+	return new EmbedBuilder()
 		.setColor(client.config.colors.green)
 		.setAuthor({
 			name: `Success | ${executor.tag}`,

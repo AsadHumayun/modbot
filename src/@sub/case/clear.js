@@ -1,4 +1,4 @@
-import { MessageEmbed } from 'discord.js';
+import { EmbedBuilder } from 'discord.js';
 import { getCaseReferences } from '../../functions/case/getCaseReferences.js';
 
 /**
@@ -21,7 +21,7 @@ export async function execute(interaction) {
 	}
 	console.log(limit);
 	const removeCases = cases.rows.map(({ dataValues }) => [dataValues.id, dataValues.case_log_url]).reverse();
-	const embed = new MessageEmbed()
+	const embed = new EmbedBuilder()
 		.setColor(interaction.client.config.colors.green)
 		.setTitle(`Success | ${interaction.user.tag}`)
 		.setDescription(

@@ -1,5 +1,5 @@
 import { inspect } from 'node:util';
-import { Permissions } from 'discord.js';
+import { PermissionsBitField } from 'discord.js';
 import { getUser } from '../functions/message/getUser.js';
 import { arrayToMatrix } from '../utils/array/arrayToMatrix.js';
 import { getUserData } from '../functions/userData/getUserData.js';
@@ -17,8 +17,8 @@ export default {
 		// fetch full structure from Discord API
 		// Only the partial structure is sent through the event.
 		(async () => {
-			console.log('b')
-			const audit = (await oldChannel.guild.fetchAuditLogs({ limit: 1 })).entries.first()
+			console.log('b');
+			const audit = (await oldChannel.guild.fetchAuditLogs({ limit: 1 })).entries.first();
 			console.log(audit);
 		})();
 		const audit = (await oldChannel.guild.fetchAuditLogs({ limit: 1, type: 'CHANNEL_UPDATE' })).entries.first()
@@ -47,8 +47,8 @@ export default {
 			const mmbr = await client.guilds.cache.get(newChannel.guildId).members.fetch({ user: usr.id, force: true });
 			const oldOverwrites = oldChannel.permissionOverwrites.cache.find(({ id }) => id === x.id);
 			const newOverwrites = newChannel.permissionOverwrites.cache.find(({ id }) => id === x.id);
-			const wasManager = oldOverwrites?.allow.has(Permissions.FLAGS.MANAGE_CHANNELS, false) || false;
-			const isManager = newOverwrites.allow.has(Permissions.FLAGS.MANAGE_CHANNELS, true);
+			const wasManager = oldOverwrites?.allow.has(PermissionsBitField.Flags.ManageChannels, false) || false;
+			const isManager = newOverwrites.allow.has(PermissionsBitField.Flags.ManageChannels, true);
 			if ((x.allow.bitfield === oldOverwrites?.allow.bitfield) && (x.deny.bitfield === oldOverwrites?.deny.bitfield)) return;
 			let respond = true;
 			let addingManager = false;
@@ -90,7 +90,7 @@ export default {
 			client.channels.cache.get(client.config.channels.permlog).send({
 				content: `
 Audit log entry executed at ${new Date(audit.createdAt).toISOString()} by M:${audit.executor.tag} (${audit.executor.id})
-Can manage: ${mmbr.permissionsIn(newChannel).has(Permissions.FLAGS.MANAGE_CHANNELS)} (member: ${usr.id}, channel: ${newChannel.id}, allow: ${x.allow.bitfield}, deny: ${x.deny.bitfield})
+Can manage: ${mmbr.permissionsIn(newChannel).has(PermissionsBitField.Flags.ManageChannels)} (member: ${usr.id}, channel: ${newChannel.id}, allow: ${x.allow.bitfield}, deny: ${x.deny.bitfield})
 ${addingManager ? `Adding ${usr.id} as a manager of ${newChannel.id}` : ''}${removingManager ? `Removing ${x.id} as a manager of ${newChannel.id}` : ''}
 				`,
 			});
@@ -110,7 +110,7 @@ ${addingManager ? `Adding ${usr.id} as a manager of ${newChannel.id}` : ''}${rem
 			client.channels.cache.get(client.config.channels.permlog).send({
 				content: `
 Audit log entry executed at ${new Date(audit.createdAt).toISOString()} by M:${audit.executor.tag} (${audit.executor.id})
-Can manage: ${mmbr.permissionsIn(newChannel).has(Permissions.FLAGS.MANAGE_CHANNELS)} (member: ${usr.id}, channel: ${newChannel.id})
+Can manage: ${mmbr.permissionsIn(newChannel).has(PermissionsBitField.Flags.ManageChannels)} (member: ${usr.id}, channel: ${newChannel.id})
 Removing data for ${id} in ${newChannel.id}
 				`,
 			});

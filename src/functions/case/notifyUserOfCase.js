@@ -1,4 +1,4 @@
-import { MessageEmbed } from 'discord.js';
+import { EmbedBuilder } from 'discord.js';
 import { getUser } from '../message/getUser.js';
 
 import { warn } from '../../embeds/dmNotification/warn.js';

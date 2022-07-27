@@ -1,4 +1,5 @@
 import { join } from 'node:path';
+import { InteractionType } from 'discord-api-types/v10';
 
 const SUBCOMMAND_DIR = join(process.cwd(), 'src', '@sub');
 
@@ -9,7 +10,7 @@ export default {
 	name: 'interactionCreate',
 	once: false,
 	async execute(client, interaction) {
-		if (!interaction.isCommand()) return;
+		if (interaction.type !== InteractionType.ApplicationCommand) return;
 
 		const command = client.commands.get(interaction.commandName) || client.commands.find((cmd) => cmd.aliases?.includes(interaction.commandName));
 		const slashCommandData = command.slashCommandData.toJSON();

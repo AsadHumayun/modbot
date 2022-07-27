@@ -1,4 +1,4 @@
-import { MessageEmbed } from 'discord.js';
+import { EmbedBuilder } from 'discord.js';
 import { formatEnums } from '../utils/string/formatEnums.js';
 import { ServerInfoSlashCommandData as slashCommandData } from '../SlashCommandData/serverinfo.js';
 
@@ -72,7 +72,7 @@ Tier **${interaction.guild.premiumTier}**.`,
 			field.inline = true;
 			return field;
 		});
-		const embed = new MessageEmbed()
+		const embed = new EmbedBuilder()
 			.setColor('BLUE')
 			.setAuthor({ name: interaction.guild.name })
 			.setThumbnail(interaction.guild.iconURL({

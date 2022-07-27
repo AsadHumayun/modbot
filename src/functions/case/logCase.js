@@ -3,11 +3,11 @@ import { client } from '../client/initClient.js';
 /**
  * Logs the case (i.e. sends it to the modlog channel) and returns the message URL if successful.
  * @param {import("../../../types/Case").Case} caseData Case data of which to creat a log message for
- * @param {import("discord.js").MessageEmbed[]} embeds Embeds to send with the log message
+ * @param {import("discord.js").EmbedBuilder[]} embeds Embeds to send with the log message
  * @returns {Promise<?string>}
  */
 export async function logCase(caseData, embeds) {
-	if (!Array.isArray(embeds)) Promise.reject(new TypeError(`[Functions:logCase] 'embeds' must be of type MessageEmbed[], received ${typeof embeds}`));
+	if (!Array.isArray(embeds)) Promise.reject(new TypeError(`[Functions:logCase] 'embeds' must be of type EmbedBuilder[], received ${typeof embeds}`));
 	const msg = await client.channels.cache.get(client.config.channels.modlog).send({
 		embeds,
 	})

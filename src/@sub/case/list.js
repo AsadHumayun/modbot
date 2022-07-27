@@ -1,4 +1,4 @@
-import { MessageEmbed } from 'discord.js';
+import { EmbedBuilder } from 'discord.js';
 import { getUser } from '../../functions/message/getUser.js';
 
 /**
@@ -22,7 +22,7 @@ export async function execute(interaction) {
 	let limit = interaction.options.getInteger('limit');
 	if (limit <= 0) limit = 25;
 
-	const history = new MessageEmbed()
+	const history = new EmbedBuilder()
 		.setColor('BLUE')
 		.setTitle(`${target.tag}'s History [${cases.length} cases]`)
 		.setDescription('To view information on a certain case, use `/case view case_id:caseId`');

@@ -1,4 +1,4 @@
-import { MessageEmbed } from 'discord.js';
+import { EmbedBuilder } from 'discord.js';
 import { getUser } from '../../functions/message/getUser.js';
 import { getCase } from '../../functions/case/getCase.js';
 
@@ -35,7 +35,7 @@ export async function execute(interaction) {
 			/**
 			 * @see {@link https://gist.github.com/LeviSnoot/d9147767abeef2f770e9ddcd91eb85aa}
 			 */
-			new MessageEmbed()
+			new EmbedBuilder()
 				.setColor('BLUE')
 				.setTitle(`Case Details - Case #${interaction.options.getInteger('case_id')}`)
 				.setDescription(`

@@ -1,4 +1,4 @@
-import { MessageEmbed } from 'discord.js';
+import { EmbedBuilder } from 'discord.js';
 import { client } from '../client/initClient.js';
 import { getUser } from '../message/getUser.js';
 import { getCaseReferences } from './getCaseReferences.js';
@@ -6,7 +6,7 @@ import { getCaseReferences } from './getCaseReferences.js';
 /**
  * Generates a log embed regarding the case provided
  * @param {import("../../../types/Case").Case} caseData Data regarding the case that must be used to generate the embed
- * @returns {Promise<MessageEmbed>}
+ * @returns {Promise<EmbedBuilder>}
  */
 export async function constructEmbed(caseData) {
 	const severity = client.config.opcodes[Number(caseData.opcode)].severity;
@@ -26,7 +26,7 @@ export async function constructEmbed(caseData) {
 	const executor = await getUser(caseData.executor);
 	const target = await getUser(caseData.target);
 	const caseReferences = caseData.refersCases?.split(';');
-	const baseEmbed = new MessageEmbed()
+	const baseEmbed = new EmbedBuilder()
 		.setColor(clr)
 		.setDescription(
 			`

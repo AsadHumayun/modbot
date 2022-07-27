@@ -1,4 +1,4 @@
-import { Client, Intents, Options } from 'discord.js';
+import { Client, GatewayIntentBits, Options } from 'discord.js';
 import { config as setupEnvironmentVariables } from 'dotenv';
 
 /**
@@ -20,12 +20,12 @@ const client = new Client({
 		parse: [],
 		repliedUser: false,
 	},
-	intents: new Intents([
-		Intents.FLAGS.GUILDS,
-		Intents.FLAGS.GUILD_MESSAGES,
-		Intents.FLAGS.GUILD_MEMBERS,
-		Intents.FLAGS.DIRECT_MESSAGES,
-	]),
+	intents: [
+		GatewayIntentBits.Guilds,
+		GatewayIntentBits.GuildMessages,
+		GatewayIntentBits.GuildMembers,
+		GatewayIntentBits.DirectMessages,
+	],
 });
 
 setupEnvironmentVariables();

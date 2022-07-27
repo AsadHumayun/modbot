@@ -1,4 +1,4 @@
-import { MessageEmbed } from 'discord.js';
+import { EmbedBuilder } from 'discord.js';
 import { formatEnums } from '../utils/string/formatEnums.js';
 import { UserInfoSlashCommandData as slashCommandData } from '../SlashCommandData/userinfo.js';
 
@@ -31,7 +31,7 @@ ${member.communicationDisabledUntil ? 'Communications Disabled' : ''}
 		// GuildMember
 		return await interaction.reply({
 			embeds: [
-				new MessageEmbed()
+				new EmbedBuilder()
 					.setColor(member.displayHexColor)
 					.setAuthor({
 						name: member.user.bot ? member.user.tag + ' [BOT]' : member.user.tag,
@@ -59,7 +59,7 @@ ${member.communicationDisabledUntil ? 'Communications Disabled' : ''}
 						},
 						{
 							name: 'Permissions',
-							value: member.permissions.has('ADMINISTRATOR') ? 'Administrator' : member.permissions.toArray().join(', '),
+							value: member.permissions.has('ADMINISTRATOR') ? 'Administrator' : member.permissions.toArray().map(formatEnums).join(', '),
 							inline: true,
 						},
 						{

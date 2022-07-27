@@ -1,4 +1,4 @@
-import { MessageEmbed } from 'discord.js';
+import { EmbedBuilder } from 'discord.js';
 import { trimStr } from '../utils/string/trimStr.js';
 
 /**
@@ -13,7 +13,7 @@ export default {
 		if ((oldMessage.guild.id != client.config.guildId || (oldMessage.author?.bot) || (oldMessage.content === newMessage.content))) return;
 		client.channels.cache.get(client.config.channels.msglog).send({
 			embeds: [
-				new MessageEmbed()
+				new EmbedBuilder()
 					.setAuthor({ name: `${newMessage.author.tag} (${newMessage.author.id})`, iconURL: newMessage.author.displayAvatarURL({ dynamic: true }) })
 					.setTitle(`Message Edited in #${oldMessage.channel.name}`)
 					.setThumbnail(oldMessage.author.displayAvatarURL())

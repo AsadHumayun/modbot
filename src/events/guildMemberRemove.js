@@ -1,4 +1,4 @@
-import { MessageEmbed } from 'discord.js';
+import { EmbedBuilder } from 'discord.js';
 
 /**
  * @type {import("../../types/Event").Event}
@@ -9,7 +9,7 @@ export default {
 	async execute(client, member) {
 		if (member.guild.id != client.config.guildId) return;
 		client.channels.cache.get(client.config.channels.memberlog).send({ embeds: [
-			new MessageEmbed()
+			new EmbedBuilder()
 				.setColor(client.config.colors.invis)
 				.setAuthor({ name: member.user.tag, iconURL: member.user.displayAvatarURL({ dynamic: true }) })
 				.setDescription(`Created <t:${Math.trunc(member.user.createdAt.getTime() / 1000)}:R>`)
