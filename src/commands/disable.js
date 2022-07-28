@@ -11,17 +11,13 @@ export default {
 				ephemeral: true,
 			});
 		}
-
 		const channel = await client.data.Channels.findByPk(interaction.channel.id);
 
-		if ((!channel) || !channel.get('disabled')) {
+		if (!channel || !channel.dataValues.disabled) {
 			/* Not disabled - disable in current channel */
-			await client.data.Channels.updateOne({
+			await client.data.Channels.upsert({
+				id: interaction.channel.id,
 				disabled: true,
-			}, {
-				where: {
-					id: interaction.channel.id,
-				},
 			});
 
 			return await interaction.reply({

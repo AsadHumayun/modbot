@@ -11,12 +11,12 @@ export function Channel(sequelize) {
 			unique: true,
 			primaryKey: true,
 			allowNull: false,
-			type: DataTypes.STRING,
+			type: DataTypes.NUMBER,
 		},
 		disabled: {
-			type: DataTypes.STRING,
 			allowNull: false,
-			defaultValue: '0',
+			defaultValue: false,
+			type: DataTypes.BOOLEAN,
 		},
 	}, {
 		timestamps: true,

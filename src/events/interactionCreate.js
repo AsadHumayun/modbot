@@ -15,6 +15,9 @@ export default {
 		const command = client.commands.get(interaction.commandName) || client.commands.find((cmd) => cmd.aliases?.includes(interaction.commandName));
 		const slashCommandData = command.slashCommandData.toJSON();
 
+		const channel = await client.data.Channels.findByPk(interaction.channel.id);
+		if (!['disable'].includes(command.name) && channel?.dataValues.disabled) return;
+
 		if (slashCommandData.options.filter(({ type }) => type === 1).length >= 1) {
 			const { execute } = await import('file:///' + join(SUBCOMMAND_DIR, interaction.commandName, interaction.options.getSubcommand() + '.js'));
 			if (!execute) {
