@@ -1,4 +1,6 @@
 {
+	"discord.removeRemoteRepository": true,
+	"discord.detailsEditing": "Editing {file_name}, {total_lines} lines",
 	"editor.detectIndentation": false,
 	"editor.comments.insertSpace": true,
 	"editor.fontFamily": "Consolas, 'Courier New', monospace",
