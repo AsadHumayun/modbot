@@ -1,5 +1,5 @@
 import { REST } from '@discordjs/rest';
-import { Routes } from 'discord-api-types/v9';
+import { Routes } from 'discord-api-types/v10';
 import { client } from './initClient.js';
 
 /**
@@ -8,7 +8,7 @@ import { client } from './initClient.js';
  * @returns {Promise<void>}
  */
 export async function reloadApplicationCommands() {
-	const rest = new REST({ version: '9' }).setToken(process.env.token);
+	const rest = new REST({ version: '10' }).setToken(process.env.token);
 	const commands = [...client.commands.values()].map(({ slashCommandData }) => slashCommandData.toJSON());
 
 	try {
