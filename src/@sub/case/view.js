@@ -15,7 +15,7 @@ export async function execute(interaction) {
 		});
 	}
 	const executor = await getUser(caseData.executor);
-	const target = await getUser(caseData.target);
+	const target = await getUser(caseData.target) || { tag: 'UNKNOWN#0000', id: '0' };
 	const caseRefs = caseData.refers_cases;
 	const refs = [];
 	if (caseRefs) {
@@ -36,7 +36,7 @@ export async function execute(interaction) {
 			 * @see {@link https://gist.github.com/LeviSnoot/d9147767abeef2f770e9ddcd91eb85aa}
 			 */
 			new EmbedBuilder()
-				.setColor('BLUE')
+				.setColor('Blue')
 				.setTitle(`Case Details - Case #${interaction.options.getInteger('case_id')}`)
 				.setDescription(`
 **Moderator**: ${executor.tag} (${executor.id})
@@ -45,6 +45,11 @@ export async function execute(interaction) {
 **Reason**: ${caseData.reason ?? interaction.client.config.case.defaultReason}
 ${refs ? `**References**: ${refs.map((ref) => `[#${ref[0]}](${ref[1]}, "Details for referenced case: #${ref[0]}")`).join(', ')}` : 'NONEOENOENOE'}
 **Executed at**: <t:${Math.trunc(caseData.createdAt.getTime() / 1000)}>
+
+${caseData.prune_days ? `**Prune Days**: ${caseData.prune_days}` : ''}
+${caseData.prune_members_kicked ? `**Members Affected**: ${caseData.prune_members_kicked}` : ''}
+${caseData.prune_included_roles ? `**Prune Included Roles**: ${caseData.prune_included_roles.split(';').map((id) => `<@&${id}>`)}` : ''}
+
 				`),
 		],
 	});
