@@ -9,7 +9,7 @@ import { Case } from '../../models/Case.js';
 import { User } from '../../models/User.js';
 import { Channel } from '../../models/Channel.js';
 
-export function initDb() {
+export async function initDb() {
 	const sequelize = new Sequelize('database', 'user', 'password', {
 		host: 'localhost',
 		dialect: 'sqlite',
@@ -30,8 +30,8 @@ export function initDb() {
 		// necessary to construct tables
 		console.info('[Sequelize] Syncing database...');
 		const start = Date.now();
-		sequelize.sync({ force: true });
-		console.info(`[Sequelize] Successfully synced sequelize database in ${start - Date.now()} ms`);
+		await sequelize.sync({ force: true });
+		console.info(`[Sequelize] Successfully synced sequelize database in ${Date.now() - start} ms`);
 	}
 
 	return Object.freeze({

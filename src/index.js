@@ -13,7 +13,7 @@ import { initDb } from './functions/client/initDb.js';
 import config from '../config.js';
 
 client.slashCommandData = new Collection();
-client.data = initDb();
+client.data = await initDb();
 client.config = config;
 
 process.on('uncaughtException', console.error);
