@@ -38,6 +38,22 @@ interface Case {
 	 * Any roles that were either added to or removed from the user in this case.
 	 */
 	roleId?: string;
+	/**
+	 * Number of members kicked whilst pruning.
+	 * (Only applicable in a prune case)
+	 */
+	pruneMembersKicked?: number;
+	/**
+	 * Additional roles included within the prune
+	 * (Only applicable in a prune case)
+	 */
+	pruneIncludedRoles?: string;
+	/**
+	 * Number of days that members were required to be inactive for
+	 * in order to be eligible for pruning.
+	 * (Only applicable in a prune case)
+	 */
+	pruneDays?: number;
 };
 
 export { Case };

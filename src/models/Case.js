@@ -42,6 +42,15 @@ export function Case(sequelize) {
 		role_id: {
 			type: DataTypes.STRING,
 		},
+		prune_members_kicked: {
+			type: DataTypes.INTEGER,
+		},
+		prune_included_roles: {
+			type: DataTypes.STRING,
+		},
+		prune_days: {
+			type: DataTypes.INTEGER,
+		},
 	}, {
 		timestamps: true,
 	});

@@ -1,4 +1,4 @@
-import type { Client, Snowflake } from 'discord.js';
+import type { Snowflake } from 'discord.js';
 
 interface RawCase {
 	id: number;
@@ -10,6 +10,9 @@ interface RawCase {
 	opcode: string;
 	case_log_url: string;
 	role_id?: string;
+	prune_members_kicked: number;
+	prune_included_roles?: string;
+	prune_days?: number;
 };
 
 export { RawCase };

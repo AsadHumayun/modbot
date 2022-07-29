@@ -13,6 +13,9 @@ export function fromRaw({
 	guild_id,
 	opcode,
 	case_log_url,
+	prune_members_kicked,
+	prune_included_roles,
+	prune_days,
 }) {
 	return {
 		id,
@@ -24,6 +27,9 @@ export function fromRaw({
 		roleId: role_id,
 		guildId: guild_id,
 		caseLogURL: case_log_url,
+		pruneMembersKicked: prune_members_kicked,
+		pruneIncludedRoles: prune_included_roles,
+		pruneDays: prune_days,
 	};
 }
 
@@ -42,6 +48,9 @@ export function toRaw({
 	guildId,
 	opcode,
 	caseLogURL,
+	pruneMembersKicked,
+	pruneIncludedRoles,
+	pruneDays,
 }) {
 	return {
 		id: Number(id),
@@ -53,5 +62,8 @@ export function toRaw({
 		role_id: roleId?.toString() || null,
 		guild_id: guildId.toString(),
 		case_log_url: caseLogURL.toString(),
+		prune_members_kicked: pruneMembersKicked ? Number(pruneMembersKicked) : null,
+		prune_included_roles: pruneIncludedRoles?.toString() || null,
+		prune_days: pruneDays ? Number(pruneDays) : null,
 	};
 }
