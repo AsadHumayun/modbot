@@ -1,6 +1,6 @@
 import { setTimeout } from 'node:timers/promises';
 import { logCase } from '../functions/case/logCase.js';
-import { EmbedBuilder, PermissionsBitField } from 'discord.js';
+import { EmbedBuilder, PermissionsBitField, UserFlagsBitField } from 'discord.js';
 import { getUser } from '../functions/message/getUser.js';
 import { createCase } from '../functions/case/createCase.js';
 import { arrayToMatrix } from '../utils/array/arrayToMatrix.js';
@@ -84,7 +84,11 @@ export default {
 		}
 		await user.reload();
 		const owner = await getUser(client.config.display);
-		if (Number(member.user.createdTimestamp) > Date.now() - 1209600000 || !member.user.avatarURL()) {
+		if (
+			Number(member.user.createdTimestamp) > Date.now() - 1209600000 ||
+			member.user.flags.has(UserFlagsBitField.Flags.Spammer) ||
+			!member.user.avatarURL()
+		) {
 			if (member.communicationsDisabledUntil) return;
 
 			const caseId = await getNewCaseId();
