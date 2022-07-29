@@ -1,5 +1,6 @@
 import { join } from 'node:path';
 import { InteractionType } from 'discord-api-types/v10';
+import { EmbedBuilder, PermissionsBitField } from 'discord.js';
 
 const SUBCOMMAND_DIR = join(process.cwd(), 'src', '@sub');
 
@@ -17,6 +18,30 @@ export default {
 
 		const channel = await client.data.Channels.findByPk(interaction.channel.id);
 		if (!['disable'].includes(command.name) && channel?.dataValues.disabled) return;
+
+		if (command.moderator) {
+			const guildMember = await client.guilds.cache.get(client.config.guildId).members.fetch({ user: interaction.user.id });
+			const hasModRole = function() {
+				let isMod = false;
+				[...guildMember.roles.cache.values()]
+					.map(({ id }) => id)
+					.forEach((id) => {
+						if (client.config.roles.mod.includes(id)) isMod = true;
+					});
+
+				return isMod;
+			};
+
+			if (!interaction.member.permissions.has(PermissionsBitField.Flags.Administrator) && !hasModRole()) {
+				return await interaction.reply({
+					embeds: [
+						new EmbedBuilder()
+							.setColor(client.config.colors.orange)
+							.setDescription('This is a moderator-only command, sorreh.'),
+					],
+				});
+			}
+		}
 
 		if (slashCommandData.options.filter(({ type }) => type === 1).length >= 1) {
 			const { execute } = await import('file:///' + join(SUBCOMMAND_DIR, interaction.commandName, interaction.options.getSubcommand() + '.js'));

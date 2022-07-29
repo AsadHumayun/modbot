@@ -7,7 +7,7 @@ import { WarnSlashCommandData as slashCommandData } from '../SlashCommandData/wa
 export default {
 	slashCommandData,
 	name: 'warn',
-	usage: '<member> [reason]',
+	moderator: true,
 	async execute(client, interaction) {
 		const member = interaction.options.getMember('target');
 		const caseId = await getNewCaseId();
@@ -20,7 +20,7 @@ export default {
 			reason,
 			refersCases,
 			guildId: interaction.guildId,
-			opcode: '0',
+			opcode: 0,
 		};
 		const embed = await constructEmbed(caseData);
 		const logMessage = await client.channels.cache.get(client.config.modlog).send({ embeds: [embed] });

@@ -9,6 +9,7 @@ import { KickSlashCommandData as slashCommandData } from '../SlashCommandData/ki
 export default {
 	slashCommandData,
 	name: 'kick',
+	moderator: true,
 	async execute(client, interaction) {
 		const target = interaction.options.getMember('target');
 		const reason = interaction.options.getString('reason') || client.config.case.defaultReason;

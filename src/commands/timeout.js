@@ -3,4 +3,5 @@ import { TimeoutSlashCommandData as slashCommandData } from '../SlashCommandData
 export default {
 	slashCommandData,
 	name: 'timeout',
+	moderator: true,
 };

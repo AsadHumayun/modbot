@@ -1,9 +1,9 @@
 ## TODO
 * Add optional referencing to `/case clear`
 * Add logging for `/case clear` command, OR make a portable custom logger (perhaps generate a new case for `/case clear`)
-* Timeout command
-* Ban command
-* Softban command
+~~* Timeout command~~
+~~* Ban command~~
+~~* Softban command~~
 * Lockdown channel command
 * Unlock channel command
 * [major] [pain] Context option in commands (hyperlinks them, similar checking for char limit w/ refs)
@@ -13,7 +13,7 @@
 * finish member join and leave logs
 * add referencing as a feature for modActionSuccessEmbed
 * add a class that has inheritance. Maybe this could be done for the db? idfk 
-* ~~Case history command~~
-* ~~Remove all previous cases regarding a user command~~
-* ~~construct case embed function~~
-* ~~add colors to global client config~~
+~~* Case history command~~
+~~* Remove all previous cases regarding a user command~~
+~~* construct case embed function~~
+~~* add colors to global client config~~

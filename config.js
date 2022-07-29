@@ -6,10 +6,9 @@ export default {
 	},
 	roles: {
 		muted: '991102197918085181',
-		/**
-		 * @todo
-		 */
-		modRoles: [],
+		mod: [
+			'1002374883327623269',
+		],
 	},
 	colors: {
 		invis: '#36393e',

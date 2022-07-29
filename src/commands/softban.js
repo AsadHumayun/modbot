@@ -9,6 +9,7 @@ import { SoftbanSlashCommandData as slashCommandData } from '../SlashCommandData
 export default {
 	slashCommandData,
 	name: 'softban',
+	moderator: true,
 	async execute(client, interaction) {
 		const target = interaction.options.getMember('target');
 		const reason = interaction.options.getString('reason') || client.config.case.defaultReason;

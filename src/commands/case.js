@@ -3,4 +3,5 @@ import { CaseSlashCommandData as slashCommandData } from '../SlashCommandData/ca
 export default {
 	slashCommandData,
 	name: 'case',
+	moderator: true,
 };
