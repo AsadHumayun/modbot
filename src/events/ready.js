@@ -11,5 +11,6 @@ export default {
 		// await toCollection(client.slashCommandData);
 		setPresence();
 		await client.users.fetch(client.config.display);
+		await client.guilds.cache.get(client.config.guildId).members.fetch();
 	},
 };
