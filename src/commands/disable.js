@@ -1,11 +1,12 @@
-import { EmbedBuilder } from 'discord.js';
+import { EmbedBuilder, PermissionsBitField } from 'discord.js';
 import { DisableSlashCommandData as slashCommandData } from '../SlashCommandData/disable.js';
 
 export default {
 	slashCommandData,
 	name: 'disable',
+	moderator: true,
 	async execute(client, interaction) {
-		if (!interaction.member.permissions.has('ADMINISTRATOR')) {
+		if (!interaction.member.permissions.has(PermissionsBitField.Flags.Administrator)) {
 			return await interaction.reply({
 				content: 'You must have the `ADMINISTRATOR` permission in order to use this command!',
 				ephemeral: true,
