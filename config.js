@@ -1,3 +1,7 @@
+/**
+ * The configuration instance
+ * @type {import("./types/Config").Config}
+ */
 export default {
 	prefix: '?',
 	display: '974480619432206336',
@@ -5,6 +9,7 @@ export default {
 		defaultReason: '*[Moderator did not specify a reason]*',
 	},
 	roles: {
+		member: '',
 		muted: '991102197918085181',
 		mod: [
 			'1002374883327623269',

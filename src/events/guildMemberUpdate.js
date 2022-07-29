@@ -8,7 +8,7 @@ export default {
 	once: false,
 	async execute(client, oldMember, newMember) {
 		if (oldMember.guild.id != client.config.guildId) return;
-		// doesn't matter which one we use, oldMember.id and newMember.id will always remain the same.
+		// 'id' property will always remain static on guild members
 		const user = await getUserData(newMember.id);
 		let roles = user.get('roles')?.split(';') || [];
 
@@ -27,7 +27,7 @@ export default {
 		for (const f in roles) {
 			if (newMember.guild.roles.cache.get(roles[f]) && (!newRoles.includes(roles[f]))) roles = roles.filter((f0) => ![roles[f]].includes(f0));
 		}
-		roles = roles.filter((f) => !['', client.const.roles.memberRole].includes(f));
+		roles = roles.filter((f) => !['', client.config.roles.member].includes(f));
 
 		// remove duplicates:
 		roles = [...new Set(roles)];
