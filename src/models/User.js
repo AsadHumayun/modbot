@@ -6,9 +6,9 @@ const {
 } = DataTypes;
 
 /**
- * Defines the 'case' model and returns it
+ * Defines the 'user' model and returns it
  * @param {import("sequelize").Sequelize} sequelize Sequelize instance
- * @returns {import("sequelize").Model}
+ * @returns {import("sequelize").Model<any, any>}
  */
 export function User(sequelize) {
 	return sequelize
@@ -26,6 +26,9 @@ export function User(sequelize) {
 				type: TEXT,
 			},
 			metadata: {
+				type: TEXT,
+			},
+			ofncs: {
 				type: TEXT,
 			},
 		}, {

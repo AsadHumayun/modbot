@@ -3,7 +3,7 @@ import { client } from '../client/initClient.js';
 /**
  * Fetches data for a particular user and creates an empty model if none exists.
  * @param {import("discord.js").Snowflake} id Snowflake user ID of the user to get data for
- * @returns {Promise<import("../../../types/RawUser").RawUser>}
+ * @returns {Promise<import("sequelize").Model<any, any>>}
  */
 export async function getUserData(id) {
 	if (!id) Promise.reject(new TypeError('[Functions:User:getUserData] Missing id'));

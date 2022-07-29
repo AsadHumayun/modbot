@@ -20,6 +20,11 @@ interface User {
 	 * Each value is separated by a ';'
 	 */
 	metadata: string;
+	/**
+	 * The user's offences.
+	 * Each value is separated by a ';'
+	 */
+	ofncs: string;
 }
 
 export { User };

@@ -44,6 +44,7 @@ export default {
 		{ name: 'UNROLE', severity: 'none' },
 		{ name: 'GUILDMEMBER_KICK', severity: 'mild' },
 		{ name: 'GUILDMEMBER_SOFTBAN', severity: 'mild' },
+		{ name: 'MEMBERS_PRUNE', severity: 'mild' },
 	],
 	guildId: '980833164945657878',
 	emojis: {
@@ -55,4 +56,21 @@ export default {
 	 * @property {string} '@link' Link to the webhook
 	 */
 	debugger: { '@link':'https://discord.com/api/webhooks/987867533833031691/giUkQ8Hc22w-BZaJN96silAHHA7AymOJqhvkZjMwzWHE_Y7PpE6b3Qx6v0wtV4ZyM_uO' },
+
+	ofncs: {
+		'1': [ 'Spam', 1 ],
+		'2': [ 'Excessive Mentions', 1 ],
+		'3': [ 'Begging', 1 ],
+		'4': [ 'Impersonating Staff', 1 ],
+		'5': [ 'Discrimination', 1 ],
+		'6': [ 'Advertising', 3 ],
+		'7': [ 'NSFW', 2 ],
+		'8': [ 'Threats', 2 ],
+		'9': [ 'Joking about Mental Illnesses (or any other disability)', 3 ],
+		'10': [ 'Disrespecting Privacy', 3 ],
+		'11': [ 'Exploiting Glitches', 3 ],
+		'12': [ 'Bypassing Punishments via the means of alts', 4 ],
+		'13': [ 'Leaving server to evade punishments (before punished; not after)', 4 ],
+		'14': [ 'Excessively Rude', 1 ],
+	},
 };

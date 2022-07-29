@@ -5,6 +5,7 @@ interface RawUser {
 	roles: string;
 	chnlp: string;
 	metadata: string;
+	ofncs: string;
 }
 
 export { RawUser };
