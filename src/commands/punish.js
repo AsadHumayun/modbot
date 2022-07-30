@@ -9,6 +9,8 @@ import { ban as generateBanEmbed } from '../embeds/dmNotification/ban.js';
 import { timeout as generateTimeoutEmbed } from '../embeds/dmNotification/timeout.js';
 import { warn as generateWarnEmbed } from '../embeds/dmNotification/warn.js';
 import { removeZeros } from '../utils/array/removeZeros.js';
+import { autoReference } from '../functions/case/autoReference.js';
+import { insertReference } from '../functions/case/insertRefs.js';
 
 export default {
 	slashCommandData,
@@ -40,7 +42,7 @@ export default {
 		/**
 		 * @type {import("../../types/Case").Case}
 		 */
-		const case_ = {
+		let case_ = {
 			id: caseId,
 			target: target.id,
 			executor: interaction.user.id,
@@ -57,7 +59,7 @@ export default {
 				await interaction.followUp({ embeds: [ banEmbed ] });
 				await mem.send({ embeds: [ banEmbed ] }).catch(() => interaction.followUp({ content: `Unable to send messages to this user: ${target.tag} (${target.id})` }));
 				await mem.ban({
-					reason: `${Object.values(client.config.ofncs)[index - 1][0]}\nResponsible moderator: U: ${interaction.user.tag} (${interaction.user.id}), target: ${target.tag} (${target.id})`,
+					reason: `User punished by ${interaction.user.tag} (${interaction.user.id}) | Case #${case_.id}`,
 					days: 0,
 				});
 			}
@@ -163,6 +165,13 @@ export default {
 				await timeout(PERMANENT_TIMEOUT_DURATION);
 			}
 		}
+
+		await (async () => {
+			const autoRef = await autoReference(interaction, case_);
+			if (!case_.refersCases?.split(';').includes(autoRef.toString())) {
+				case_ = insertReference(case_, autoRef);
+			}
+		})();
 
 		const embed = await constructEmbed(case_);
 		case_.caseLogURL = await logCase(case_, [embed]);
