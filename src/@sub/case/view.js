@@ -43,13 +43,12 @@ export async function execute(interaction) {
 **Target**: ${target.tag} (${target.id})
 **Action**: ${interaction.client.config.opcodes[Number(caseData.opcode)].name.replace(/_+/g, '.').toLowerCase()}
 **Reason**: ${caseData.reason ?? interaction.client.config.case.defaultReason}
-${refs ? `**References**: ${refs.map((ref) => `[#${ref[0]}](${ref[1]}, "Details for referenced case: #${ref[0]}")`).join(', ')}` : 'NONEOENOENOE'}
-**Executed at**: <t:${Math.trunc(caseData.createdAt.getTime() / 1000)}>
-
-${caseData.prune_days ? `**Prune Days**: ${caseData.prune_days}` : ''}
-${caseData.prune_members_kicked ? `**Members Affected**: ${caseData.prune_members_kicked}` : ''}
-${caseData.prune_included_roles ? `**Prune Included Roles**: ${caseData.prune_included_roles.split(';').map((id) => `<@&${id}>`)}` : ''}
-
+${refs ? `**References**: ${refs.map((ref) => `[#${ref[0]}](${ref[1]}, "Details for referenced case: #${ref[0]}")`).join(', ')}` : 'Case data unavailable'}
+**Executed**: <t:${Math.trunc(caseData.createdAt.getTime() / 1000)}>
+**Prune Days**: ${caseData.prune_days ? `${caseData.prune_days}` : 'n/a'}
+**Members Affected**: ${caseData.prune_members_kicked ? `${caseData.prune_members_kicked}` : 'n/a'}
+**Prune Included Roles**: ${caseData.prune_included_roles ? `${caseData.prune_included_roles.split(';').map((id) => `<@&${id}>`)}` : 'n/a'}
+**Channel**: ${caseData.channel_id ? `${caseData.channel_id} (<#${caseData.channel_id}>)` : 'n/a'}
 				`),
 		],
 	});
