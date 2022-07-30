@@ -1,5 +1,5 @@
 import { join } from 'node:path';
-import { InteractionType } from 'discord-api-types/v10';
+import { InteractionType } from 'discord.js';
 import { EmbedBuilder, PermissionsBitField } from 'discord.js';
 
 const SUBCOMMAND_DIR = join(process.cwd(), 'src', '@sub');
