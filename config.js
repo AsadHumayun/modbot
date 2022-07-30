@@ -45,6 +45,8 @@ export default {
 		{ name: 'GUILDMEMBER_KICK', severity: 'mild' },
 		{ name: 'GUILDMEMBER_SOFTBAN', severity: 'mild' },
 		{ name: 'MEMBERS_PRUNE', severity: 'mild' },
+		{ name: 'PUNISH', severity: 'mild' },
+		{ name: 'GUILDMEMBER_BAN', severity: 'high' },
 	],
 	guildId: '980833164945657878',
 	emojis: {
