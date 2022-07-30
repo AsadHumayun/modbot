@@ -51,6 +51,9 @@ export function Case(sequelize) {
 		prune_days: {
 			type: DataTypes.INTEGER,
 		},
+		channel_id: {
+			type: DataTypes.STRING,
+		},
 	}, {
 		timestamps: true,
 	});

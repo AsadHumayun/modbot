@@ -49,6 +49,7 @@ export default {
 		{ name: 'GUILDMEMBER_BAN', severity: 'high' },
 		{ name: 'GUILDMEMBER_UNPUNISH', severity: '' },
 		{ name: 'GUILDMEMBER_UNBAN', severity: '' },
+		{ name: 'GUILDCHANNEL_LOCK', severity: 'mild' },
 	],
 	guildId: '980833164945657878',
 	emojis: {

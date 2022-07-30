@@ -16,6 +16,7 @@ export function fromRaw({
 	prune_members_kicked,
 	prune_included_roles,
 	prune_days,
+	channel_id,
 }) {
 	return {
 		id,
@@ -30,6 +31,7 @@ export function fromRaw({
 		pruneMembersKicked: prune_members_kicked,
 		pruneIncludedRoles: prune_included_roles,
 		pruneDays: prune_days,
+		channelId: channel_id,
 	};
 }
 
@@ -51,6 +53,7 @@ export function toRaw({
 	pruneMembersKicked,
 	pruneIncludedRoles,
 	pruneDays,
+	channelId,
 }) {
 	return {
 		id: Number(id),
@@ -65,5 +68,6 @@ export function toRaw({
 		prune_members_kicked: pruneMembersKicked ? Number(pruneMembersKicked) : null,
 		prune_included_roles: pruneIncludedRoles?.toString() || null,
 		prune_days: pruneDays ? Number(pruneDays) : null,
+		channel_id: channelId?.toString(),
 	};
 }

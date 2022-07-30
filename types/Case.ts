@@ -54,6 +54,11 @@ interface Case {
 	 * (Only applicable in a prune case)
 	 */
 	pruneDays?: number;
+	/**
+	 * The channel that was affected by this case.
+	 * (Only applicable in a lcok/unlock case)
+	 */
+	channelId?: Snowflake;
 };
 
 export { Case };

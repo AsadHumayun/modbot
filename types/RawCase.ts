@@ -13,6 +13,7 @@ interface RawCase {
 	prune_members_kicked: number;
 	prune_included_roles?: string;
 	prune_days?: number;
+	channel_id?: Snowflake;
 };
 
 export { RawCase };

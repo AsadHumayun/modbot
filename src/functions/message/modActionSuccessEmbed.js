@@ -9,8 +9,9 @@ import { getUser } from './getUser.js';
 export async function modActionSuccessEmbed(caseData) {
 	if (!caseData) Promise.reject(new ReferenceError('[Functions:message:modActionSuccessEmbed] parameter \'caseData\' not present'));
 
-	const target = await getUser(caseData.target);
+	let target = await getUser(caseData.target);
 	const executor = await getUser(caseData.executor);
+	if (caseData.channelId) target = { tag: `<#${caseData.channelId}>`, id: caseData.channelId };
 
 	return new EmbedBuilder()
 		.setColor(client.config.colors.green)
@@ -20,7 +21,7 @@ export async function modActionSuccessEmbed(caseData) {
 		})
 		.setDescription(
 			`
-**Member**: ${target.tag} (${target.id})
+**Target**: ${target.tag} (${target.id})
 **Action**: ${client.config.opcodes[Number(caseData.opcode)].name.toLowerCase().replace(/_/g, '.')}
 **Reason**: ${caseData.reason ?? client.config.case.defaultReason}
 `,
