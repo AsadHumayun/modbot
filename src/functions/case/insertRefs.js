@@ -5,7 +5,7 @@
  * @returns {import("../../../types/Case").Case}
  */
 export function insertReference(case_, ref) {
-	if (!ref || isNaN(ref)) return;
+	if (!ref || isNaN(ref)) return case_;
 	if (ref && !case_.refersCases) {
 		case_.refersCases = ref.toString();
 	}
