@@ -4,6 +4,8 @@ import { timeout } from '../../embeds/dmNotification/timeout.js';
 import { getNewCaseId } from '../../functions/case/getNewCaseId.js';
 import { constructEmbed } from '../../functions/case/constructEmbed.js';
 import { modActionSuccessEmbed } from '../../functions/message/modActionSuccessEmbed.js';
+import { autoReference } from '../../functions/case/autoReference.js';
+import { insertReference } from '../../functions/case/insertRefs.js';
 
 /**
  * Set subcommand for parent command "timeout"; refer to .../SlashCommandData/timeout.js for further information.
@@ -15,7 +17,7 @@ export async function execute(interaction) {
 	const minutes = interaction.options.getInteger('minutes', true);
 	const reason = interaction.options.getString('reason', false) || client.config.case.defaultReason;
 	const refersCases = interaction.options.getString('reference')?.split(',')?.join(';') || null;
-	const case_ = {
+	let case_ = {
 		id: caseId,
 		target: target.id,
 		executor: interaction.user.id,
@@ -37,6 +39,14 @@ export async function execute(interaction) {
 		return;
 	}
 	const embed = await constructEmbed(case_);
+
+	await (async () => {
+		const autoRef = await autoReference(interaction, case_);
+		if (!case_.refersCases?.split(';').includes(autoRef.toString())) {
+			case_ = insertReference(case_, autoRef);
+		}
+	})();
+
 	const msg = await client.channels.cache.get(client.config.modlog).send({
 		embeds: [
 			embed,
