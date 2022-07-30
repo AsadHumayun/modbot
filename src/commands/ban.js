@@ -5,6 +5,8 @@ import { getNewCaseId } from '../functions/case/getNewCaseId.js';
 import { constructEmbed } from '../functions/case/constructEmbed.js';
 import { modActionSuccessEmbed } from '../functions/message/modActionSuccessEmbed.js';
 import { BanSlashCommandData as slashCommandData } from '../SlashCommandData/ban.js';
+import { autoReference } from '../functions/case/autoReference.js';
+import { insertReference } from '../functions/case/insertRefs.js';
 
 export default {
 	slashCommandData,
@@ -26,7 +28,7 @@ export default {
 		/**
 		 * @type {import("../../types/Case").Case}
 		 */
-		const case_ = {
+		let case_ = {
 			id: caseId,
 			target: target.id,
 			executor: interaction.user.id,
@@ -35,6 +37,14 @@ export default {
 			refersCases: refs,
 			opcode: 12,
 		};
+
+		await (async () => {
+			const autoRef = await autoReference(interaction, case_);
+			if (!case_.refersCases?.split(';').includes(autoRef.toString())) {
+				case_ = insertReference(case_, autoRef);
+			}
+		})();
+
 		const embed = await constructEmbed(case_);
 		case_.caseLogURL = await logCase(case_, [embed]);
 		await createCase(case_);
