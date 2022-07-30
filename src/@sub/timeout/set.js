@@ -1,5 +1,6 @@
 import { client } from '../../functions/client/initClient.js';
 import { createCase } from '../../functions/case/createCase.js';
+import { timeout } from '../../embeds/dmNotification/timeout.js';
 import { getNewCaseId } from '../../functions/case/getNewCaseId.js';
 import { constructEmbed } from '../../functions/case/constructEmbed.js';
 import { modActionSuccessEmbed } from '../../functions/message/modActionSuccessEmbed.js';
@@ -21,7 +22,7 @@ export async function execute(interaction) {
 		reason,
 		refersCases,
 		guildId: interaction.guildId,
-		opcode: '3',
+		opcode: 3,
 	};
 
 	try {
@@ -45,4 +46,7 @@ export async function execute(interaction) {
 	await createCase(case_);
 	const embeds = [await modActionSuccessEmbed(case_)];
 	await interaction.reply({ embeds });
+	target.send({
+		embeds: [timeout(target, interaction.user, interaction.guild, client.users.cache.get(client.config.display), case_)],
+	});
 }
