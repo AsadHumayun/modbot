@@ -48,7 +48,7 @@ ${caseReferences?.length > 0 ? '**References**:' : ''}`,
 	if (caseReferences) {
 		refs = await getCaseReferences(caseReferences, null, 6000 - baseEmbed.length - 4096);
 		baseEmbed.setDescription(
-			`${baseEmbed.description}${refs.join(', ')}`,
+			`${baseEmbed.data.description}${refs.join(', ')}`,
 		);
 	}
 
