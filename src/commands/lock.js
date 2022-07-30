@@ -7,7 +7,8 @@ import { constructEmbed } from '../functions/case/constructEmbed.js';
 import { createCase } from '../functions/case/createCase.js';
 import { logCase } from '../functions/case/logCase.js';
 import { modActionSuccessEmbed } from '../functions/message/modActionSuccessEmbed.js';
-
+import { autoReference } from '../functions/case/autoReference.js';
+import { insertReference } from '../functions/case/insertRefs.js';
 
 export default {
 	slashCommandData,
@@ -28,7 +29,7 @@ export default {
 		/**
 		 * @type {import("../../types/Case").Case}
 		 */
-		const case_ = {
+		let case_ = {
 			id: caseId,
 			target: '1',
 			executor: interaction.user.id,
@@ -45,6 +46,13 @@ export default {
 			reason: `Channel lock by ${interaction.user.tag} (${interaction.user.id}) | Case #${case_.id}`,
 			type: OverwriteType.Role,
 		});
+
+		await (async () => {
+			const autoRef = await autoReference(interaction, case_);
+			if (!case_.refersCases?.split(';').includes(autoRef.toString())) {
+				case_ = insertReference(case_, autoRef);
+			}
+		})();
 
 		const embed = await constructEmbed(case_);
 		case_.caseLogURL = await logCase(case_, [embed]);
