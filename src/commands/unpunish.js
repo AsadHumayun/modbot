@@ -14,6 +14,8 @@ import { getNewCaseId } from '../functions/case/getNewCaseId.js';
 import { createCase } from '../functions/case/createCase.js';
 import { logCase } from '../functions/case/logCase.js';
 import { constructEmbed } from '../functions/case/constructEmbed.js';
+import { autoReference } from '../functions/case/autoReference.js';
+import { insertReference } from '../functions/case/insertRefs.js';
 
 export default {
 	slashCommandData,
@@ -50,7 +52,7 @@ export default {
 		/**
 		 * @type {import("../../types/Case").Case}
 		 */
-		const case_ = {
+		let case_ = {
 			id: caseId,
 			target: target.id,
 			executor: interaction.user.id,
@@ -68,10 +70,17 @@ export default {
 			if (!mem.isCommunicationDisabled()) return;
 
 			case_.opcode = 4;
+			await (async () => {
+				const autoRef = await autoReference(interaction, case_);
+				if (!case_.refersCases?.split(';').includes(autoRef.toString())) {
+					case_ = insertReference(case_, autoRef);
+				}
+			})();
+
 			await interaction.followUp({
 				embeds: [
 					new EmbedBuilder()
-						.setColor(client.config.colors.invis)
+						.setColor(0x36393e)
 						.setDescription(`${target.tag}'s mute has been removed because of "${reason}"; they were sent the following message:`),
 				],
 			});
