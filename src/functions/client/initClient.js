@@ -1,5 +1,6 @@
 import { Client, GatewayIntentBits, Options } from 'discord.js';
 import { config as setupEnvironmentVariables } from 'dotenv';
+import config from '../../../config.js';
 
 /**
  * The currently instantiated Discord Client.
@@ -27,6 +28,13 @@ const client = new Client({
 		GatewayIntentBits.DirectMessages,
 	],
 });
+
+/**
+ * Moved here from index.js as when adding choices
+ * for the punish command in slashCommandData, config was
+ * not accessible.
+ */
+client.config = config;
 
 setupEnvironmentVariables();
 client.login(process.env.token);
