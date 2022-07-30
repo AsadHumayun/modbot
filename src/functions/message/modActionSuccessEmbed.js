@@ -26,5 +26,8 @@ export async function modActionSuccessEmbed(caseData) {
 **Reason**: ${caseData.reason ?? client.config.case.defaultReason}
 `,
 		)
+		.setFooter({
+			text: `Case #${caseData.id}`
+		})
 		.setTimestamp();
 }
