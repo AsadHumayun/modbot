@@ -24,7 +24,7 @@ export default {
 \`/punish <user> <offence>\` to punish a user for an offence;
 \`/unpunish <user> <offence>\` to unpunish a user for an offence.
 
-${Object.entries(client.config.ofncs).map((ofnc, index) => `[${ofnc[0]}]: ${ofnc[1][0]} - ${ofncs[index]}`).join('\n')}
+${Object.entries(client.config.ofncs).map((ofnc, index) => `[${ofnc[0]}]: ${ofnc[1][0]} - ${ofncs[index] || 0}`).join('\n')}
 						`,
 					),
 			],
