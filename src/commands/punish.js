@@ -13,6 +13,7 @@ import { removeZeros } from '../utils/array/removeZeros.js';
 export default {
 	slashCommandData,
 	name: 'punish',
+	moderator: true,
 	async execute(client, interaction) {
 		const target = interaction.options.getUser('target', true);
 		const data = await getUserData(target.id);
