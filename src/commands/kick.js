@@ -11,7 +11,7 @@ export default {
 	name: 'kick',
 	moderator: true,
 	async execute(client, interaction) {
-		const target = interaction.options.getMember('target');
+		const target = interaction.options.getMember('target', true);
 		const reason = interaction.options.getString('reason') || client.config.case.defaultReason;
 		const refs = interaction.options.getString('reference')?.split(',').join(';');
 
