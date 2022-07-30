@@ -24,13 +24,15 @@ export async function constructEmbed(caseData) {
 	else {clr = '#00f514';}
 
 	const executor = await getUser(caseData.executor);
-	const target = await getUser(caseData.target);
+	let target = await getUser(caseData.target) || { tag: 'UNKNOWN#0000', id: '0' };
+	if (caseData.channelId) target = { tag: `<#${caseData.channelId}>`, id: caseData.channelId };
+
 	const caseReferences = caseData.refersCases?.split(';');
 	const baseEmbed = new EmbedBuilder()
 		.setColor(clr)
 		.setDescription(
 			`
-**Member**: ${target.tag} (${target.id})
+**Target**: ${target.tag} (${target.id})
 **Action**: ${client.config.opcodes[Number(caseData.opcode)].name.toLowerCase().replace(/_/g, '.')}
 **Reason**: ${caseData.reason ?? client.config.case.defaultReason}
 ${caseReferences?.length > 0 ? '**References**:' : ''}`,
