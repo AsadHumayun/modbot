@@ -5,6 +5,7 @@ import { insertReference } from '../../functions/case/insertRefs.js';
 import { autoReference } from '../../functions/case/autoReference.js';
 import { constructEmbed } from '../../functions/case/constructEmbed.js';
 import { modActionSuccessEmbed } from '../../functions/message/modActionSuccessEmbed.js';
+import { timeoutRemove } from '../../embeds/dmNotification/timeoutRemove.js';
 
 /**
  * Remove subcommand for parent command "timeout"; refer to .../SlashCommandData/timeout.js for further information.
@@ -14,7 +15,7 @@ export async function execute(interaction) {
 	const caseId = await getNewCaseId();
 	const target = interaction.options.getMember('target', true);
 
-	if (!target.communicationDisabledUntil) {
+	if (!target.isCommunicationDisabled()) {
 		return await interaction.reply({
 			content: 'That user is not timed out',
 			ephemeral: true,
@@ -41,6 +42,11 @@ export async function execute(interaction) {
 
 	try {
 		await target.timeout(0, `Moderator: ${interaction.user.tag} (${interaction.user.id})\nReason: ${reason}`);
+		await target.send({
+			embeds: [
+				timeoutRemove(target, interaction.user, interaction.guild, client.users.cache.get(client.config.display), case_),
+			],
+		});
 	}
 	catch (e) {
 		await interaction.reply({
