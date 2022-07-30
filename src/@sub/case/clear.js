@@ -19,7 +19,7 @@ export async function execute(interaction) {
 			ephemeral: true,
 		});
 	}
-	console.log(limit);
+
 	const removeCases = cases.rows.map(({ dataValues }) => [dataValues.id, dataValues.case_log_url]).reverse();
 	const embed = new EmbedBuilder()
 		.setColor(interaction.client.config.colors.green)

@@ -11,7 +11,6 @@ export default {
 	moderator: true,
 	async execute(client, interaction) {
 		const days = interaction.options.getInteger('days', true) || 0;
-		console.log(days, typeof days);
 		const reason = interaction.options.getString('reason') || client.config.case.defaultReason;
 		const roles = [
 			interaction.options.getRole('role0'),
@@ -77,7 +76,6 @@ export default {
 						opcode: 10,
 					};
 					const embed = prune(interaction.user, client.users.cache.get(client.config.display), case_);
-					console.log('3');
 					case_.caseLogURL = await logCase(case_, [embed]);
 					await createCase(case_);
 					await i.update({
@@ -111,6 +109,5 @@ export default {
 					components: [],
 				});
 			});
-
 	},
 };
