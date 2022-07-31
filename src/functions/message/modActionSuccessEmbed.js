@@ -27,7 +27,7 @@ export async function modActionSuccessEmbed(caseData) {
 `,
 		)
 		.setFooter({
-			text: `Case #${caseData.id}`
+			text: `Case #${caseData.id}`,
 		})
 		.setTimestamp();
 }
