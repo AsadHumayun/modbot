@@ -35,7 +35,8 @@ export async function constructEmbed(caseData) {
 **Target**: ${target.tag} (${target.id})
 **Action**: ${client.config.opcodes[Number(caseData.opcode)].name.toLowerCase().replace(/_/g, '.')}
 **Reason**: ${caseData.reason ?? client.config.case.defaultReason}
-${caseReferences?.length > 0 ? '**References**:' : ''}`,
+${caseData.roleId ? `**Role**: <@&${caseData.roleId}> (${caseData.roleId})` : ''}
+${caseReferences?.length > 0 ? '**References**: ' : ''}`,
 		)
 		.setAuthor({
 			name: `${executor.tag} (${executor.id})`,
