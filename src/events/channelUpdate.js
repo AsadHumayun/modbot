@@ -1,40 +1,60 @@
-import { inspect } from 'node:util';
 import { PermissionsBitField } from 'discord.js';
 import { getUser } from '../functions/message/getUser.js';
 import { arrayToMatrix } from '../utils/array/arrayToMatrix.js';
 import { getUserData } from '../functions/userData/getUserData.js';
+import { AuditLogEvent, OverwriteType } from 'discord.js';
+import { equals } from '../utils/array/eq.js';
 
 /**
  * @type {import("../../types/Event").Event}
+ * @see {@link https://discord.js.org/#/docs/discord.js/main/class/PermissionOverwriteManager}
  */
 export default {
 	name: 'channelUpdate',
 	once: false,
 	async execute(client, oldChannel, newChannel) {
-		return;
 		if (['DM', 'GROUP_DM'].includes(oldChannel.type) || (oldChannel.guild.id != client.config.guildId)) return;
 		// ensure that the user` is still in the server. If yes, then edit data.
 		// fetch full structure from Discord API
 		// Only the partial structure is sent through the event.
-		(async () => {
-			console.log('b');
-			const audit = (await oldChannel.guild.fetchAuditLogs({ limit: 1 })).entries.first();
-			console.log(audit);
-		})();
-		const audit = (await oldChannel.guild.fetchAuditLogs({ limit: 1, type: 'CHANNEL_UPDATE' })).entries.first()
-		|| (
-			await oldChannel.guild.fetchAuditLogs({ limit: 1, type: 'CHANNEL_OVERWRITE_CREATE' })
-		).entries.first()
-		|| (
-			await oldChannel.guild.fetchAuditLogs({ limit: 1, type: 'CHANNEL_OVERWRITE_DELETE' })
-		).entries.first();
-		// console.log(audit);
-		const oldPerms = [...oldChannel.permissionOverwrites.cache.values()].filter((d) => d.type == 'member');
-		const newPerms = [...newChannel.permissionOverwrites.cache.values()].filter((d) => d.type == 'member');
-		// if below statement is true, then the channel permissionOverwrites have not changed.
-		// this had to be added to prevent this event from emitting randomly whenever a different property of a channel was updated (e.g. slowmode, name change, etc.)
-		if (Object.entries(inspect(oldPerms, { depth: 0 })).join(';') === Object.entries(inspect(newPerms, { depth: 0 })).join(';')) return;
+
+		console.info('Fetching audit logs');
+		let audits = [];
+
+		const channelUpdateAuditLogType = (await oldChannel.guild.fetchAuditLogs({ limit: 1, type: AuditLogEvent.ChannelUpdate })).entries.first() || undefined;
+		const channelOverwriteCreateAuditLogType = (await oldChannel.guild.fetchAuditLogs({ limit: 1, type: AuditLogEvent.ChannelOverwriteCreate })).entries.first() || undefined;
+		const channelOverwriteDeleteAuditLogType = (await oldChannel.guild.fetchAuditLogs({ limit: 1, type: AuditLogEvent.ChannelOverwriteDelete })).entries.first() || undefined;
+		const channelOverwriteUpdateAuditLogType = (await oldChannel.guild.fetchAuditLogs({ limit: 1, type: AuditLogEvent.ChannelOverwriteUpdate })).entries.first() || undefined;
+
+		audits.push(
+			channelUpdateAuditLogType,
+			channelOverwriteCreateAuditLogType,
+			channelOverwriteDeleteAuditLogType,
+			channelOverwriteUpdateAuditLogType,
+		);
+
+		audits = audits.filter(x => x !== undefined);
+
+		audits.sort((a, b) => {
+			if (a.createdTimestamp === b.createdTimestamp) return 0;
+			if (a.createdTimestamp < b.createdTimestamp) return -1; else return 1;
+		});
+
+		const audit = audits[audits.length - 1];
+
+		/**
+		 * There was an error here that was riving me crazy. Both `newPerms` and `oldPerms`
+		 * were empty arrays when they shouldn't have been. Djs v14 update reqquired the filter typer paramter to be a numbewr/enum
+		 * I was using a string.
+		 * @see {@link https://discord-api-types.dev/api/discord-api-types-v10/enum/OverwriteType}
+		 */
+		const oldPerms = [...oldChannel.permissionOverwrites.cache.values()].filter((d) => d.type == OverwriteType.Member);
+		const newPerms = [...newChannel.permissionOverwrites.cache.values()].filter((d) => d.type == OverwriteType.Member);
+
+		if (equals(oldPerms.map(JSON.stringify), newPerms.map(JSON.stringify))) return;
+
 		const rmv = [];
+
 		for (const x in oldPerms) {
 			const member = await newChannel.guild.members.fetch({ user: x.id, force: true }).catch(() => {return;});
 			if (!member) break;
@@ -90,7 +110,7 @@ export default {
 			client.channels.cache.get(client.config.channels.permlog).send({
 				content: `
 Audit log entry executed at ${new Date(audit.createdAt).toISOString()} by M:${audit.executor.tag} (${audit.executor.id})
-Can manage: ${mmbr.permissionsIn(newChannel).has(PermissionsBitField.Flags.ManageChannels)} (member: ${usr.id}, channel: ${newChannel.id}, allow: ${x.allow.bitfield}, deny: ${x.deny.bitfield})
+Can manage: ${mmbr.permissionsIn(newChannel).has(PermissionsBitField.Flags.ManageChannels, true)} (member: ${usr.id}, channel: ${newChannel.id}, allow: ${x.allow.bitfield}, deny: ${x.deny.bitfield})
 ${addingManager ? `Adding ${usr.id} as a manager of ${newChannel.id}` : ''}${removingManager ? `Removing ${x.id} as a manager of ${newChannel.id}` : ''}
 				`,
 			});
@@ -110,7 +130,7 @@ ${addingManager ? `Adding ${usr.id} as a manager of ${newChannel.id}` : ''}${rem
 			client.channels.cache.get(client.config.channels.permlog).send({
 				content: `
 Audit log entry executed at ${new Date(audit.createdAt).toISOString()} by M:${audit.executor.tag} (${audit.executor.id})
-Can manage: ${mmbr.permissionsIn(newChannel).has(PermissionsBitField.Flags.ManageChannels)} (member: ${usr.id}, channel: ${newChannel.id})
+Can manage: ${mmbr.permissionsIn(newChannel).has(PermissionsBitField.Flags.ManageChannels, true)} (member: ${usr.id}, channel: ${newChannel.id})
 Removing data for ${id} in ${newChannel.id}
 				`,
 			});
