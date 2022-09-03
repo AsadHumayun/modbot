@@ -1,4 +1,4 @@
-import { EmbedBuilder } from 'discord.js';
+import { EmbedBuilder, ChannelType } from 'discord.js';
 import { trimStr } from '../utils/string/trimStr.js';
 
 /**
@@ -9,15 +9,16 @@ export default {
 	once: false,
 	async execute(client, oldMessage, newMessage) {
 		if (newMessage.partial) newMessage = await newMessage.fetch();
-		if (oldMessage.channel.type == 'DM') return;
+		if (oldMessage.channel.type == ChannelType.DM) return;
 		if ((oldMessage.guild.id != client.config.guildId || (oldMessage.author?.bot) || (oldMessage.content === newMessage.content))) return;
+
 		client.channels.cache.get(client.config.channels.msglog).send({
 			embeds: [
 				new EmbedBuilder()
 					.setAuthor({ name: `${newMessage.author.tag} (${newMessage.author.id})`, iconURL: newMessage.author.displayAvatarURL({ dynamic: true }) })
 					.setTitle(`Message Edited in #${oldMessage.channel.name}`)
 					.setThumbnail(oldMessage.author.displayAvatarURL())
-					.setColor('RANDOM')
+					.setColor('Random')
 					.addFields(
 						{ name: 'Old Message', value: trimStr(oldMessage.content, 1024), inline: true },
 						{ name: 'New Message', value: trimStr(newMessage.content, 1024), inline: true },

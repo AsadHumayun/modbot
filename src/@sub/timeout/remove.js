@@ -41,7 +41,7 @@ export async function execute(interaction) {
 	})();
 
 	try {
-		await target.timeout(0, `Moderator: ${interaction.user.tag} (${interaction.user.id})\nReason: ${reason}`);
+		await target.timeout(null, `Moderator: ${interaction.user.tag} (${interaction.user.id})\nReason: ${reason}`);
 		await target.send({
 			embeds: [
 				timeoutRemove(target, interaction.user, interaction.guild, client.users.cache.get(client.config.display), case_),
@@ -49,6 +49,7 @@ export async function execute(interaction) {
 		});
 	}
 	catch (e) {
+		console.error(e);
 		await interaction.reply({
 			content: `Unable to remove timeout for user ${target.user.tag} (${target.id}) due to a lack of sufficient permissions`,
 			ephemeral: true,
@@ -57,7 +58,7 @@ export async function execute(interaction) {
 		return;
 	}
 	const embed = await constructEmbed(case_);
-	const msg = await client.channels.cache.get(client.config.modlog).send({
+	const msg = await client.channels.cache.get(client.config.channels.modlog).send({
 		embeds: [
 			embed,
 		],

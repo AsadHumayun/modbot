@@ -47,7 +47,7 @@ export async function execute(interaction) {
 		}
 	})();
 
-	const msg = await client.channels.cache.get(client.config.modlog).send({
+	const msg = await client.channels.cache.get(client.config.channels.modlog).send({
 		embeds: [
 			embed,
 		],

@@ -1,4 +1,4 @@
-import { EmbedBuilder } from 'discord.js';
+import { EmbedBuilder, ChannelType } from 'discord.js';
 import { formatEnums } from '../utils/string/formatEnums.js';
 import { ServerInfoSlashCommandData as slashCommandData } from '../SlashCommandData/serverinfo.js';
 
@@ -28,8 +28,8 @@ Guild created
 			{
 				name: 'Channels',
 				value: `
-**${interaction.guild.channels.cache.filter(({ type }) => ['GUILD_TEXT', 'GUILD_NEWS', 'GUILD_NEWS_THREAD', 'GUILD_PRIVATE_THREAD', 'GUILD_PUBLIC_THREAD'].includes(type)).size}** Text,
-**${interaction.guild.channels.cache.filter(({ type }) => ['GUILD_VOICE', 'GUILD_STAGE_VOICE'].includes(type)).size}** Voice,
+**${interaction.guild.channels.cache.filter(({ type }) => [ChannelType.GuildText, ChannelType.GuildNews, ChannelType.GuildNewsThread, ChannelType.GuildPrivateThread, ChannelType.GuildPublicThread].includes(type)).size}** Text,
+**${interaction.guild.channels.cache.filter(({ type }) => [ChannelType.GuildVoice, ChannelType.GuildStageVoice].includes(type)).size}** Voice,
 **${interaction.guild.channels.cache.size}** Total.
 ${threads?.size >= 1 ? `**${threads.size}** Active Threads.` : ''}
 				`,
@@ -73,7 +73,7 @@ Tier **${interaction.guild.premiumTier}**.`,
 			return field;
 		});
 		const embed = new EmbedBuilder()
-			.setColor('BLUE')
+			.setColor('Blue')
 			.setAuthor({ name: interaction.guild.name })
 			.setThumbnail(interaction.guild.iconURL({
 				dynamic: true,

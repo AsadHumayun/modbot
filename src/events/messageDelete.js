@@ -1,5 +1,6 @@
 import { EmbedBuilder } from 'discord.js';
 import { arrayToMatrix } from '../utils/array/arrayToMatrix.js';
+import { ChannelType } from 'discord.js';
 
 /**
  * @type {import("../../types/Event").Event}
@@ -8,7 +9,7 @@ export default {
 	name: 'messageDelete',
 	once: false,
 	async execute(client, message) {
-		if (message.channel.type == 'DM' || message.guild.id !== client.config.guildId) return;
+		if (message.channel.type == ChannelType.DM || message.guild.id !== client.config.guildId) return;
 		if (!message.content) return;
 		/**
 		 * Image detection section sourced from {@link https://github.com/AsadHumayun/Discord-Image-Logger/blob/master/src/index.js}

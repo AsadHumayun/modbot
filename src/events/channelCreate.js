@@ -2,6 +2,7 @@ import { trimStr } from '../utils/string/trimStr.js';
 import { getUser } from '../functions/message/getUser.js';
 import { arrayToMatrix } from '../utils/array/arrayToMatrix.js';
 import { getUserData } from '../functions/userData/getUserData.js';
+import { ChannelType, AuditLogEvent, OverwriteType } from 'discord.js';
 
 /**
  * @type {import("../../types/Event").Event}
@@ -10,9 +11,9 @@ export default {
 	name: 'channelCreate',
 	once: false,
 	async execute(client, channel) {
-		if (['DM', 'GROUP_DM'].includes(channel.type) || (channel.guild.id != client.config.guildId)) return;
-		const audit = (await channel.guild.fetchAuditLogs({ limit: 1, type: 'CHANNEL_CREATE' })).entries.first();
-		const channelPermissions = [...channel.permissionOverwrites.cache.values()].filter((d) => d.type == 'member');
+		if ([ChannelType.DM, ChannelType.GroupDM].includes(channel.type) || (channel.guild.id != client.config.guildId)) return;
+		const audit = (await channel.guild.fetchAuditLogs({ limit: 1, type: AuditLogEvent.ChannelCreate })).entries.first();
+		const channelPermissions = [...channel.permissionOverwrites.cache.values()].filter((d) => d.type == OverwriteType.Member);
 		channelPermissions.forEach(async (x) => {
 			const usr = await getUser(x.id);
 			const user = await getUserData(usr.id);

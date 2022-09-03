@@ -1,4 +1,4 @@
-import { EmbedBuilder } from 'discord.js';
+import { EmbedBuilder, PermissionFlagsBits } from 'discord.js';
 import { formatEnums } from '../utils/string/formatEnums.js';
 import { UserInfoSlashCommandData as slashCommandData } from '../SlashCommandData/userinfo.js';
 
@@ -59,12 +59,12 @@ ${member.communicationDisabledUntil ? 'Communications Disabled' : ''}
 						},
 						{
 							name: 'Permissions',
-							value: member.permissions.has('ADMINISTRATOR') ? 'Administrator' : member.permissions.toArray().map(formatEnums).join(', '),
+							value: member.permissions.has(PermissionFlagsBits.Administrator) ? 'Administrator' : member.permissions.toArray().join(', '),
 							inline: true,
 						},
 						{
 							name: 'Highest Role',
-							value: member.roles.highest.toString() || 'None',
+							value: member.roles.highest.toString() || '@everyone',
 							inline: true,
 						},
 						{

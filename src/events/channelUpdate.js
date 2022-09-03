@@ -2,7 +2,7 @@ import { PermissionsBitField } from 'discord.js';
 import { getUser } from '../functions/message/getUser.js';
 import { arrayToMatrix } from '../utils/array/arrayToMatrix.js';
 import { getUserData } from '../functions/userData/getUserData.js';
-import { AuditLogEvent, OverwriteType } from 'discord.js';
+import { ChannelType, AuditLogEvent, OverwriteType } from 'discord.js';
 import { equals } from '../utils/array/eq.js';
 
 /**
@@ -13,12 +13,11 @@ export default {
 	name: 'channelUpdate',
 	once: false,
 	async execute(client, oldChannel, newChannel) {
-		if (['DM', 'GROUP_DM'].includes(oldChannel.type) || (oldChannel.guild.id != client.config.guildId)) return;
+		if ([ChannelType.DM, ChannelType.GroupDM].includes(oldChannel.type) || (oldChannel.guild.id != client.config.guildId)) return;
 		// ensure that the user` is still in the server. If yes, then edit data.
 		// fetch full structure from Discord API
 		// Only the partial structure is sent through the event.
 
-		console.info('Fetching audit logs');
 		let audits = [];
 
 		const channelUpdateAuditLogType = (await oldChannel.guild.fetchAuditLogs({ limit: 1, type: AuditLogEvent.ChannelUpdate })).entries.first() || undefined;
@@ -62,6 +61,7 @@ export default {
 				rmv.push(oldPerms[x].id);
 			}
 		}
+
 		newPerms.forEach(async (x) => {
 			const usr = await getUser(x.id);
 			const mmbr = await client.guilds.cache.get(newChannel.guildId).members.fetch({ user: usr.id, force: true });

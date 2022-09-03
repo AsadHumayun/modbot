@@ -35,13 +35,13 @@ export async function execute(interaction) {
 	if (interaction.options.getString('reference')) {
 		const refs = await getCaseReferences(interaction.options.getString('reference').split(','), null, 6000 - embed.length - 4096);
 		embed.setDescription(
-			`${embed.description}${refs.join(', ')}`,
+			`${embed.data.description}${refs.join(', ')}`,
 		);
 	}
-	embed.description += '\n**Affected Cases**: ';
+	embed.data.description += '\n**Affected Cases**: ';
 	const affectedCases = await getCaseReferences(removeCases.map((x) => x[0]).slice(0, limit), null, 6000 - embed.length - 4096);
 	embed.setDescription(
-		`${embed.description}${affectedCases.join(', ')}`,
+		`${embed.data.description}${affectedCases.join(', ')}`,
 	);
 
 
