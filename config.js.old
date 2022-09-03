@@ -3,14 +3,16 @@
  * @type {import("./types/Config").Config}
  */
 export default {
-	display: '1005086922558930954',
+	display: '974480619432206336',
 	case: {
 		defaultReason: '*[Moderator did not specify a reason]*',
 	},
 	roles: {
-		member: '1015565127518531687',
-		muted: '1015565241117052949',
-		mod: ['1015565047226974289'],
+		member: '',
+		muted: '991102197918085181',
+		mod: [
+			'1002374883327623269',
+		],
 	},
 	colors: {
 		invis: '#36393e',
@@ -19,13 +21,15 @@ export default {
 		orange: '#f59300',
 	},
 	channels: {
-		welcome: '1014643454954979331',
-		modlog: '1015562274578112533',
-		memberlog: '1015562290474516500',
-		permlog: '1015563907424849980',
-		msglog: '1015563970104528967',
+		welcome: '990934663147188254',
+		modlog: '985789719361245205',
+		memberlog: '991088774857490503',
+		permlog: '991091202478731337',
+		msglog: '992597659439333439',
 	},
-	defaultRoles: ['1015565127518531687'],
+	defaultRoles: [
+		'990957499190489159',
+	],
 	opcodes: [
 		/* type severity = "high" | "mild" | "none" | ""; */
 		{ name: 'WARNING_ADD', severity: 'mild' },
@@ -46,16 +50,16 @@ export default {
 		{ name: 'GUILDCHANNEL_LOCK', severity: 'mild', rel: 16 },
 		{ name: 'GUILDCHANNEL_UNLOCK', severity: '', rel: 15 },
 	],
-	guildId: '1014643454954979328',
+	guildId: '980833164945657878',
 	emojis: {
 		verified: '<:Verified:990362737500622858>',
 		verifiedCDN: 'https://cdn.discordapp.com/attachments/985789702302994432/990371778327093268/Verified.png',
 	},
 
 	/**
-	 * @const {Record<string, string>}
+	 * @property {string} '@link' Link to the webhook
 	 */
-	debugger: { '@link': 'https://discord.com/api/webhooks/1015565723776585781/slMl346RJh0L8HrgjhHz0eQ_NS29tB5NT71NcPcNpEWBE2uDK5a_miOHzV1nVu46uURU' },
+	debugger: { '@link':'https://discord.com/api/webhooks/987867533833031691/giUkQ8Hc22w-BZaJN96silAHHA7AymOJqhvkZjMwzWHE_Y7PpE6b3Qx6v0wtV4ZyM_uO' },
 
 	ofncs: {
 		'1': [ 'Spam', 1 ],
