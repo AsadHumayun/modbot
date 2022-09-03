@@ -18,6 +18,6 @@ export async function autoReference(interaction, caseData) {
 		},
 	});
 
-	if (entries.length < 0) return;
-	return entries[entries.length - 1].id;
+	if (!entries || entries.length <= 0) return null;
+	return entries[entries.length - 1].id || undefined;
 }
