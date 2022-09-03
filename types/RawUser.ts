@@ -6,6 +6,6 @@ interface RawUser {
 	chnlp: string;
 	metadata: string;
 	ofncs: string;
-}
+};
 
 export { RawUser };

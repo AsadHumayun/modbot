@@ -15,6 +15,6 @@ interface Event {
 	 * @param args The arugments to run this event with (these may vary depending on the event selected)
 	 */
 	execute(client: Client, ...args: unknown[]): Promise<void>;
-}
+};
 
 export { Event };

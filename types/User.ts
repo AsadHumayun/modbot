@@ -25,6 +25,6 @@ interface User {
 	 * Each value is separated by a ';'
 	 */
 	ofncs: string;
-}
+};
 
 export { User };

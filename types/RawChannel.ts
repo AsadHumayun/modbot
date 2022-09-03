@@ -1,7 +1,9 @@
+import type { Snowflake } from 'discord.js';
+
 interface RawChannel {
-	id: string;
+	id: Snowflake;
 	disabled?: boolean;
-}
+};
 
 export {  
 	RawChannel,

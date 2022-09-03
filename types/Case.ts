@@ -8,11 +8,11 @@ interface Case {
 	/**
 	 * Discord ID of the user on which this action was executed.
 	 */
-	target: string;
+	target: Snowflake;
 	/**
 	 * Dicord ID of the user who executed this case.
-	 */
-	executor: string;
+	 */ 
+	executor: Snowflake;
 	/**
 	 * The reason for this case.
 	 */

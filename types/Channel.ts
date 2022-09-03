@@ -9,7 +9,7 @@ interface Channel {
 	 * Whether or not the bot should ignore interactions in this channel
 	 */
 	disabled?: boolean;
-}
+};
 
 export {
 	Channel,
