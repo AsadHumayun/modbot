@@ -16,5 +16,7 @@
 		".vscode",
 		".VSCodeCounter",
 		"$bin",
+		".idlerc",
+		".Pain",
 	]
 }

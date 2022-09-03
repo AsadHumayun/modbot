@@ -88,6 +88,9 @@ export default {
 			const embed = timeoutRemove(target, interaction.user, interaction.guild, client.users.cache.get(client.config.display), case_);
 			await interaction.followUp({ embeds: [ embed ] });
 			await target.send({ embeds: [ embed ] }).catch(() => {return;});
+
+			const member = await client.guilds.cache.get(client.config.guildId).members.fetch(target.id);
+			member.timeout(null, `Case #${case_.id} - ${case_.reason}. Responsible moderator: ${interaction.user.tag}`);
 		}
 
 		if (level == 1 && (ofncs[index - 1] < 2)) {
