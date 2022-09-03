@@ -1,7 +1,11 @@
+/* eslint-disable no-unreachable */
+
 export default {
 	name: 'messageCreate',
 	once: false,
 	async execute(client, message) {
+		return;
+
 		if (message.channel.type == 'DM') return;
 
 		if (message.partial) message = await message.fetch().catch(() => {return;});
