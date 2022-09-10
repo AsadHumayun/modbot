@@ -9,7 +9,7 @@
 export function applyGlobals(embed, target, executor, caseData) {
 	return embed
 		.addFields(
-			{ name: 'Moderator', value: `${executor.tag}` },
+			{ name: 'Moderator', value: executor.tag },
 			{ name: 'Reason', value: caseData.reason },
 		);
 }
