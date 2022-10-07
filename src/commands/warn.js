@@ -4,6 +4,8 @@ import { getNewCaseId } from '../functions/case/getNewCaseId.js';
 import { modActionSuccessEmbed } from '../functions/message/modActionSuccessEmbed.js';
 import { WarnSlashCommandData as slashCommandData } from '../SlashCommandData/warn.js';
 import { warn } from '../embeds/dmNotification/warn.js';
+import { logCase } from '../functions/case/logCase.js';
+
 
 export default {
 	slashCommandData,
@@ -24,8 +26,8 @@ export default {
 			opcode: 0,
 		};
 		const embed = await constructEmbed(caseData);
-		const logMessage = await client.channels.cache.get(client.config.channels.modlog).send({ embeds: [embed] });
-		caseData.caseLogURL = logMessage.url;
+		caseData.caseLogURL = await logCase(caseData, [embed]);
+
 		await createCase(caseData);
 
 		const embeds = [await modActionSuccessEmbed(caseData)];

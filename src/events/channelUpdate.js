@@ -42,6 +42,7 @@ export default {
 		const audit = audits[audits.length - 1];
 
 		/**
+		 * @CommentType {REMOVE_BEFORE_SUBMISSION}
 		 * There was an error here that was riving me crazy. Both `newPerms` and `oldPerms`
 		 * were empty arrays when they shouldn't have been. Djs v14 update reqquired the filter typer paramter to be a numbewr/enum
 		 * I was using a string.

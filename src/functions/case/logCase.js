@@ -14,14 +14,14 @@ import {
  */
 export async function logCase(caseData, embeds) {
 	if (!Array.isArray(embeds)) Promise.reject(new TypeError(`[Functions:logCase] 'embeds' must be of type EmbedBuilder[], received ${typeof embeds}`));
-	const fLog = `
-Client Uptime: ${client.uptime}
-Unix Timestamp: ${Date.now() / 1000}
-Case Data: 
+	const fLog = `<Case>
+Client Uptime: ${client.uptime}ms
+Unix Timestamp: ${Date.now() / 1000}s
+Raw Case Data: 
 \`\`\`json
 ${JSON.stringify(caseData, null, 4)}
 \`\`\`
-(cba to actually parse it properly lmfaoooo)
+</Case>
 `;
 	const today = new Date(Date.now()).toISOString().split('T')[0];
 	const path = `${process.cwd()}/.logs/cases/${today}.log`;
@@ -35,7 +35,6 @@ ${JSON.stringify(caseData, null, 4)}
 		createWriteStream(path, { flags: 'a' }).end(fLog);
 	}
 	await setTimeout(1000);
-
 	const msg = await client.channels.cache.get(client.config.channels.modlog).send({
 		embeds,
 	})

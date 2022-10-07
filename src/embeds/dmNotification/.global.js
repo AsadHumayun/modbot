@@ -1,5 +1,5 @@
 /**
- * Adds globally static field values to a `EmbedBuilder` instance and returns the modified version.
+ * Adds globally static field values to an `EmbedBuilder` instance and returns the modified version.
  * @param {import("discord.js").EmbedBuilder} embed Embed to add globally static fields to
  * @param {import("discord.js").User} target Target user
  * @param {import("discord.js").User} executor User who executed the command

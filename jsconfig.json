@@ -14,9 +14,10 @@
 	"exclude": [
 		"node_modules",
 		".vscode",
+		".idea",
+		"vs",
 		".VSCodeCounter",
 		"$bin",
 		".idlerc",
-		".Pain",
 	]
 }
