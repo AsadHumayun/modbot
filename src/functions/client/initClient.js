@@ -10,6 +10,7 @@ const client = new Client({
 	// Overriding the cache used in GuildManager, ChannelManager, GuildChannelManager, RoleManager
 	// and PermissionOverwriteManager is unsupported and will break functionality
 	makeCache: Options.cacheWithLimits({
+		// (method) Options.cacheWithLimits(settings?: CacheWithLimitsOptions | undefined): CacheFactory
 		MessageManager: 100,
 		GuildMemberManager: 100,
 		PresenceManager: 0,
