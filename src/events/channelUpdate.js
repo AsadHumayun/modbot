@@ -14,7 +14,7 @@ export default {
 	once: false,
 	async execute(client, oldChannel, newChannel) {
 		if ([ChannelType.DM, ChannelType.GroupDM].includes(oldChannel.type) || (oldChannel.guild.id != client.config.guildId)) return;
-		// ensure that the user` is still in the server. If yes, then edit data.
+		// ensure that the user is still in the server. If yes, then edit data.
 		// fetch full structure from Discord API
 		// Only the partial structure is sent through the event.
 
