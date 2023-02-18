@@ -19,7 +19,7 @@ export default {
 
 		if (!target.manageable) {
 			return await interaction.reply({
-				content: `Unable to ban ${target.user.tag}, lacking perissions`,
+				content: `Unable to ban ${target.user.tag}, lacking permissions`,
 				ephemeral: true,
 			});
 		}
