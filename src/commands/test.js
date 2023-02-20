@@ -1,6 +1,9 @@
 import { TestSlashCommandData as slashCommandData } from '../SlashCommandData/test.js';
 import { join } from 'node:path';
 
+/**
+ * @type {import('../../types/command').Command}
+ */
 export default {
 	slashCommandData,
 	name: 'test',

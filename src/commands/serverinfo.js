@@ -5,6 +5,7 @@ import { ServerInfoSlashCommandData as slashCommandData } from '../SlashCommandD
 /**
  * Appropriate documentation references
  * Guid: {@link https://discord.js.org/#/docs/discord.js/main/class/Guild}
+ * @type {import('../../types/command').Command}
  */
 export default {
 	slashCommandData,

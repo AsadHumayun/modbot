@@ -6,6 +6,9 @@ import { constructEmbed } from '../functions/case/constructEmbed.js';
 import { modActionSuccessEmbed } from '../functions/message/modActionSuccessEmbed.js';
 import { KickSlashCommandData as slashCommandData } from '../SlashCommandData/kick.js';
 
+/**
+ * @type {import('../../types/command').Command}
+ */
 export default {
 	slashCommandData,
 	name: 'kick',

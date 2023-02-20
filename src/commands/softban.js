@@ -6,6 +6,9 @@ import { constructEmbed } from '../functions/case/constructEmbed.js';
 import { modActionSuccessEmbed } from '../functions/message/modActionSuccessEmbed.js';
 import { SoftbanSlashCommandData as slashCommandData } from '../SlashCommandData/softban.js';
 
+/**
+ * @type {import('../../types/command').Command}
+ */
 export default {
 	slashCommandData,
 	name: 'softban',

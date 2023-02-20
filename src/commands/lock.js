@@ -10,6 +10,9 @@ import { modActionSuccessEmbed } from '../functions/message/modActionSuccessEmbe
 import { autoReference } from '../functions/case/autoReference.js';
 import { insertReference } from '../functions/case/insertRefs.js';
 
+/**
+ * @type {import('../../types/command').Command}
+ */
 export default {
 	slashCommandData,
 	name: 'lock',

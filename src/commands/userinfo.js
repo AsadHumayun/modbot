@@ -2,6 +2,9 @@ import { EmbedBuilder, PermissionFlagsBits } from 'discord.js';
 import { formatEnums } from '../utils/string/formatEnums.js';
 import { UserInfoSlashCommandData as slashCommandData } from '../SlashCommandData/userinfo.js';
 
+/**
+ * @type {import('../../types/command').Command}
+ */
 export default {
 	slashCommandData,
 	name: 'userinfo',

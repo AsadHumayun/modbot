@@ -1,6 +1,9 @@
 import { EmbedBuilder, PermissionsBitField } from 'discord.js';
 import { DisableSlashCommandData as slashCommandData } from '../SlashCommandData/disable.js';
 
+/**
+ * @type {import('../../types/command').Command}
+ */
 export default {
 	slashCommandData,
 	name: 'disable',

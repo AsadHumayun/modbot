@@ -12,6 +12,9 @@ import { removeZeros } from '../utils/array/removeZeros.js';
 import { autoReference } from '../functions/case/autoReference.js';
 import { insertReference } from '../functions/case/insertRefs.js';
 
+/**
+ * @type {import('../../types/command').Command}
+ */
 export default {
 	slashCommandData,
 	name: 'punish',

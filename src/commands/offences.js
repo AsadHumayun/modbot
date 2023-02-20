@@ -2,6 +2,9 @@ import { OffencesSlashCommandData as slashCommandData } from '../SlashCommandDat
 import { getUserData } from '../functions/userData/getUserData.js';
 import { EmbedBuilder } from 'discord.js';
 
+/**
+ * @type {import('../../types/command').Command}
+ */
 export default {
 	slashCommandData,
 	name: 'offences',

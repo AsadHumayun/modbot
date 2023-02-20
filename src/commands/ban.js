@@ -8,6 +8,9 @@ import { BanSlashCommandData as slashCommandData } from '../SlashCommandData/ban
 import { autoReference } from '../functions/case/autoReference.js';
 import { insertReference } from '../functions/case/insertRefs.js';
 
+/**
+ * @type {import('../../types/command').Command}
+ */
 export default {
 	slashCommandData,
 	name: 'ban',

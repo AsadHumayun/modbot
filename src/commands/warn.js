@@ -6,7 +6,9 @@ import { WarnSlashCommandData as slashCommandData } from '../SlashCommandData/wa
 import { warn } from '../embeds/dmNotification/warn.js';
 import { logCase } from '../functions/case/logCase.js';
 
-
+/**
+ * @type {import('../../types/command').Command}
+ */
 export default {
 	slashCommandData,
 	name: 'warn',
