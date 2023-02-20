@@ -24,6 +24,9 @@ export async function execute(interaction) {
 
 	const reason = interaction.options.getString('reason', false) || client.config.case.defaultReason;
 	const refersCases = interaction.options.getString('reference')?.split(',')?.join(';') || null;
+	/**
+	 * @type {import("../../../types/Case").Case}
+	 */
 	let case_ = {
 		id: caseId,
 		target: target.id,
