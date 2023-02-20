@@ -42,7 +42,9 @@ export default {
 				});
 			}
 		}
-
+		/**
+		 * if the slash command data has no options that are type 1, then it has no subcommands and can be executed normally
+		 */
 		if (slashCommandData.options.filter(({ type }) => type === 1).length >= 1) {
 			const { execute } = await import('file:///' + join(SUBCOMMAND_DIR, interaction.commandName, interaction.options.getSubcommand() + '.js'));
 			if (!execute) {
