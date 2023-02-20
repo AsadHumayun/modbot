@@ -70,7 +70,7 @@ export default {
 		'6': [ 'Advertising', 3 ],
 		'7': [ 'NSFW', 2 ],
 		'8': [ 'Threats', 2 ],
-		'9': [ 'Joking about Mental Illnesses (or any other disability)', 3 ],
+		'9': [ 'Joking about illnesses (or any other disability)', 3 ],
 		'10': [ 'Disrespecting Privacy', 3 ],
 		'11': [ 'Exploiting Glitches', 3 ],
 		'12': [ 'Bypassing Punishments via the means of alts', 4 ],
