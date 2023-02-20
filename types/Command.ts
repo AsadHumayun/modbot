@@ -6,10 +6,19 @@ interface Command {
 	 */
 	name: string;
 	/**
-	 * Thw slash command data for the command.
+	 * Whether the command is a moderator command or not.
+	 */
+		moderator?: boolean;
+	/**
+	 * The slash command data for the command.
 	 * Built in the ./SlashCommandData dir.
 	 */
 	slashCommandData: SlashCommandBuilder;
+	/**
+	 * The main function that is executed when the slash comand is triggered through an event.
+	 * @param args The arguments for the command.
+	 * @returns {Promise<never>}
+	 */
 	execute?: (...args: unknown[]) => Promise<never>;
 }
 
