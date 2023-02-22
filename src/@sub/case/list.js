@@ -16,7 +16,7 @@ export async function execute(interaction) {
 	if (!cases.length) {
 		return await interaction.reply({
 			content: `No cases found for ${target.tag}`,
-			ephermal: true,
+			ephemeral: true,
 		});
 	}
 	let limit = interaction.options.getInteger('limit');
