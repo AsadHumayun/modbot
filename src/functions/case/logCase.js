@@ -8,7 +8,7 @@ import {
 
 /**
  * Logs the case (i.e. sends it to the modlog channel) and returns the message URL if successful.
- * @param {import("../../../types/Case").Case} caseData Case data of which to creat a log message for
+ * @param {import("../../../types/Case").Case} caseData Case data of which to create a log message for
  * @param {import("discord.js").EmbedBuilder[]} embeds Embeds to send with the log message
  * @returns {Promise<?string>}
  */
