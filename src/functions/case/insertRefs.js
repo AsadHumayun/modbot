@@ -6,12 +6,9 @@
  */
 export function insertReference(case_, ref) {
 	if (!ref || isNaN(ref)) return case_;
-	if (ref && !case_.refersCases) {
-		case_.refersCases = ref.toString();
-	}
-	else if (ref && case_.refersCases) {
-		case_.refersCases = `${case_.refersCases};${ref.toString()}`;
-	}
+	case_.refersCases = (case_.refersCases || '').split(';');
+	case_.refersCases.push(ref);
+	case_.refersCases = case_.refersCases.filter((f) => String(f).length > 0).join(';');
 
 	return case_;
 }
