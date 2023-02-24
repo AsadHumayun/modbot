@@ -14,14 +14,8 @@ export async function initDb() {
 		host: 'localhost',
 		dialect: 'sqlite',
 		storage: join(process.cwd(), 'assets', 'db', 'database.sqlite'),
-		// logging: console.log,
-		// logQueryParameters: true,
 	});
 
-	/**
-	 * @MP Potential class usage here? Seeing some rep.
-	 * @EndMP
-	 */
 	const Cases = Case(sequelize);
 	const Users = User(sequelize);
 	const Channels = Channel(sequelize);
