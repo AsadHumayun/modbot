@@ -27,6 +27,18 @@ export default {
 		permlog: '991091202478731337',
 		msglog: '992597659439333439',
 	},
+	/**
+	 * The default client presence data that should be applied to the client in the setPresence function
+	 * in the absence of the 'data' parameter.
+	 * @type {import("discord.js").PresenceData}
+	 */
+	defaultClientPresenceData: {
+		activities: [{
+			name: 'you',
+			type: 'WATCHING',
+		}],
+		status: 'dnd',
+	},
 	defaultRoles: [
 		'990957499190489159',
 	],

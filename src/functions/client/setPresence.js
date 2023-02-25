@@ -8,19 +8,7 @@ import { client } from './initClient.js';
  * @param {import("discord.js").PresenceData} data
  * @returns {void}
  */
-export function setPresence(data) {
-	if (data) {
-		client.user.presence.set(data);
-	}
-	else {
-		client.user.presence.set({
-			activities: [{
-				name: 'you',
-				type: 'WATCHING',
-			}],
-			status: 'dnd',
-		});
-	}
-
+export function setPresence(data = client.config.defaultClientPresenceData) {
+	client.user.presence.set(data);
 	return void 0;
 }
