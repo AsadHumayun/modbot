@@ -4,6 +4,7 @@ import { client } from '../client/initClient.js';
  * Extracts the ID of a mentioned user from its raw content
  * ID is not capitalised in order to keep it in line with Discord.js' naming conventions.
  * @param {string} mention String to extract mention ID from
+ * @returns {?string}
  */
 function _getId(mention) {
 	if (!mention) return;
@@ -13,7 +14,7 @@ function _getId(mention) {
 /**
  * Fetches a Discord User either by ID or raw mention
  * @param {string} str The mention - either ID or raw <@(!)id>
- * @returns {Promise<import("discord.js").User>} Discord user
+ * @returns {Promise<import("discord.js").User> | null} Discord user (or null if invalid ID provided)
  */
 export async function getUser(str) {
 	if (!str) return;
