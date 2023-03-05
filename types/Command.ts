@@ -8,7 +8,7 @@ interface Command {
 	/**
 	 * Whether the command is a moderator command or not.
 	 */
-		moderator?: boolean;
+	moderator?: boolean;
 	/**
 	 * The slash command data for the command.
 	 * Built in the ./SlashCommandData dir.
@@ -17,9 +17,9 @@ interface Command {
 	/**
 	 * The main function that is executed when the slash comand is triggered through an event.
 	 * @param args The arguments for the command.
-	 * @returns {Promise<never>}
+	 * @returns {Promise<void>}
 	 */
-	execute?: (...args: unknown[]) => Promise<never>;
+	execute?: (...args: unknown[]) => Promise<void>;
 }
 
 export { Command }
