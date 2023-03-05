@@ -27,11 +27,6 @@ export default {
 		permlog: '991091202478731337',
 		msglog: '992597659439333439',
 	},
-	/**
-	 * The default client presence data that should be applied to the client in the setPresence function
-	 * in the absence of the 'data' parameter.
-	 * @type {import("discord.js").PresenceData}
-	 */
 	defaultClientPresenceData: {
 		activities: [{
 			name: 'you',
@@ -43,7 +38,7 @@ export default {
 		'990957499190489159',
 	],
 	opcodes: [
-		/* type severity = "high" | "mild" | "none" | ""; */
+		/* severity = "high" | "mild" | "none" | ""; */
 		{ name: 'WARNING_ADD', severity: 'mild' },
 		{ name: 'WARNING_REMOVE', severity: 'none', rel: 1 },
 		{ name: 'CASE_REMOVE', severity: 'none' },
@@ -67,12 +62,7 @@ export default {
 		verified: '<:Verified:990362737500622858>',
 		verifiedCDN: 'https://cdn.discordapp.com/attachments/985789702302994432/990371778327093268/Verified.png',
 	},
-
-	/**
-	 * @property {string} '@link' Link to the webhook
-	 */
 	debugger: { '@link':'https://discord.com/api/webhooks/987867533833031691/giUkQ8Hc22w-BZaJN96silAHHA7AymOJqhvkZjMwzWHE_Y7PpE6b3Qx6v0wtV4ZyM_uO' },
-
 	ofncs: {
 		'1': [ 'Spam', 1 ],
 		'2': [ 'Excessive Mentions', 1 ],
@@ -90,3 +80,4 @@ export default {
 		'14': [ 'Excessively Rude', 1 ],
 	},
 };
+
