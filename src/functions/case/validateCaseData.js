@@ -1,7 +1,7 @@
 /**
  * Validates case data
  * @param {import("../../../types/Case").Case} data Case data to be validated
- * @returns {Promise<boolean>}
+ * @returns {Promise<boolean> | Promise<never>}
  */
 export async function validateCaseData(data) {
 	if (!data) Promise.reject(new Error('[Functions:createCase] \'data\' must be of type Object, received null'));
