@@ -9,22 +9,22 @@ interface User {
 	 * Role persist data.
 	 * Different roles separated with a ';'
 	 */
-	roles: string;
+	roles?: string;
 	/**
 	 * Channel permission overwrites data.
 	 * Each value is separated by a ';'
 	 */
-	chnlp: string;
+	chnlp?: string;
 	/**
 	 * Includes general metadata "yes/no" values.
 	 * Each value is separated by a ';'
 	 */
-	metadata: string;
+	metadata?: string;
 	/**
 	 * The user's offences.
 	 * Each value is separated by a ';'
 	 */
-	ofncs: string;
+	ofncs?: string;
 };
 
 export { User };
