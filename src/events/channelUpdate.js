@@ -1,8 +1,7 @@
-import { PermissionsBitField } from 'discord.js';
+import { PermissionsBitField, ChannelType, AuditLogEvent, OverwriteType } from 'discord.js';
 import { getUser } from '../functions/message/getUser.js';
 import { arrayToMatrix } from '../utils/array/arrayToMatrix.js';
 import { getUserData } from '../functions/userData/getUserData.js';
-import { ChannelType, AuditLogEvent, OverwriteType } from 'discord.js';
 import { equals } from '../utils/array/eq.js';
 
 /**
