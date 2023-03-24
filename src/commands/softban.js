@@ -19,7 +19,7 @@ export default {
 		const refs = interaction.options.getString('reference')?.split(',').join(';');
 
 		if (!target.manageable) {
-			return await interaction.reply({
+			return await interaction.followUp({
 				content: `Unable to softban ${target.user.tag}, lacking perissions`,
 				ephemeral: true,
 			});
@@ -50,6 +50,6 @@ export default {
 		await interaction.guild.members.unban(target.user.id, `Softbanned by ${interaction.user.tag} (${interaction.user.id}) | Case #${caseId}`);
 
 		const embeds = [await modActionSuccessEmbed(case_)];
-		await interaction.reply({ embeds });
+		await interaction.followUp({ embeds });
 	},
 };

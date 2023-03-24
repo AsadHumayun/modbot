@@ -9,7 +9,7 @@ import { getCase } from '../../functions/case/getCase.js';
 export async function execute(interaction) {
 	const caseData = await getCase(interaction.options.getInteger('case_id'));
 	if (!caseData) {
-		return await interaction.reply({
+		return await interaction.followUp({
 			content: 'A case by that id does not exist',
 			ephemeral: true,
 		});
@@ -30,7 +30,7 @@ export async function execute(interaction) {
 		}
 	}
 
-	await interaction.reply({
+	await interaction.followUp({
 		embeds: [
 			/**
 			 * @see {@link https://gist.github.com/LeviSnoot/d9147767abeef2f770e9ddcd91eb85aa}

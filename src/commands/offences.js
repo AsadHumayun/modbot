@@ -15,9 +15,9 @@ export default {
 		let ofncs = userData.get('ofncs') ? userData.get('ofncs').split(';').map(Number) : new Array(Object.keys(client.config.ofncs).length).fill(0);
 
 		if (target.bot) ofncs = ofncs.map(() => -1);
-		if (interaction.options.getBoolean('raw')) return await interaction.reply('```\n[' + ofncs.join(', ') + ']\n```');
+		if (interaction.options.getBoolean('raw')) return await interaction.followUp('```\n[' + ofncs.join(', ') + ']\n```');
 
-		await interaction.reply({
+		await interaction.followUp({
 			embeds: [
 				new EmbedBuilder()
 					.setColor('Blue')

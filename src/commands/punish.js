@@ -26,11 +26,11 @@ export default {
 		const ofncs = data.get('ofncs') ? data.get('ofncs').split(';').map(Number) : [];
 
 		if (!Object.values(client.config.ofncs)[index - 1]) {
-			return await interaction.reply(`Index ${index} out of bounds for length ${Object.keys(client.config.ofncs).length}`);
+			return await interaction.followUp(`Index ${index} out of bounds for length ${Object.keys(client.config.ofncs).length}`);
 		}
 		if (!ofncs[index - 1]) ofncs[index - 1] = 0;
 
-		await interaction.reply({
+		await interaction.followUp({
 			embeds: [
 				new EmbedBuilder()
 					.setColor(client.config.colors.invis)

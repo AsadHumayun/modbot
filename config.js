@@ -1,17 +1,17 @@
 /**
- * The configuration instance
- * @type {import("./types/Config").Config}
- */
+* The configuration instance
+* @type {import("./types/Config").Config}
+*/
 export default {
-	display: '974480619432206336',
+	display: '720270972229517413',
 	case: {
 		defaultReason: '*[Moderator did not specify a reason]*',
 	},
 	roles: {
-		member: '',
-		muted: '991102197918085181',
+		member: '1084206787118506126',
+		muted: '1084207020707688468',
 		mod: [
-			'1002374883327623269',
+			'1084206763185811456',
 		],
 	},
 	colors: {
@@ -21,11 +21,11 @@ export default {
 		orange: '#f59300',
 	},
 	channels: {
-		welcome: '990934663147188254',
-		modlog: '985789719361245205',
-		memberlog: '991088774857490503',
-		permlog: '991091202478731337',
-		msglog: '992597659439333439',
+		welcome: '1084202656395964518',
+		modlog: '1084209105159335976',
+		memberlog: '1084209138093002762',
+		permlog: '1084209120716013568',
+		msglog: '1084210333201219764',
 	},
 	defaultClientPresenceData: {
 		activities: [{
@@ -34,9 +34,7 @@ export default {
 		}],
 		status: 'dnd',
 	},
-	defaultRoles: [
-		'990957499190489159',
-	],
+	defaultRoles: [],
 	opcodes: [
 		/* severity = "high" | "mild" | "none" | ""; */
 		{ name: 'WARNING_ADD', severity: 'mild' },
@@ -57,12 +55,12 @@ export default {
 		{ name: 'GUILDCHANNEL_LOCK', severity: 'mild', rel: 16 },
 		{ name: 'GUILDCHANNEL_UNLOCK', severity: '', rel: 15 },
 	],
-	guildId: '980833164945657878',
+	guildId: '1084202655762620529',
 	emojis: {
-		verified: '<:Verified:990362737500622858>',
+		verified: '<:Verified:1084214745156030494>',
 		verifiedCDN: 'https://cdn.discordapp.com/attachments/985789702302994432/990371778327093268/Verified.png',
 	},
-	debugger: { '@link':'https://discord.com/api/webhooks/987867533833031691/giUkQ8Hc22w-BZaJN96silAHHA7AymOJqhvkZjMwzWHE_Y7PpE6b3Qx6v0wtV4ZyM_uO' },
+	debugger: { '@link':'https://discord.com/api/webhooks/1084220836258513017/FRdg2tFlr2f5m2kwXQ6HJ60V3oKfgl0VsHtBa1w0h_mRUvPHd0OurqRiVWnSAu2-p7ME' },
 	ofncs: {
 		'1': [ 'Spam', 1 ],
 		'2': [ 'Excessive Mentions', 1 ],
@@ -80,4 +78,3 @@ export default {
 		'14': [ 'Excessively Rude', 1 ],
 	},
 };
-

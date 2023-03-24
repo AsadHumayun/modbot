@@ -90,7 +90,7 @@ Tier **${interaction.guild.premiumTier}**.`,
 
 		if (interaction.guild.verified) embed.setAuthor({ name: interaction.guild.name, iconURL: client.config.emojis.verifiedCDN });
 
-		await interaction.reply({
+		await interaction.followUp({
 			embeds: [
 				embed,
 			],

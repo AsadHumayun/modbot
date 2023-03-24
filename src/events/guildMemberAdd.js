@@ -47,15 +47,12 @@ export default {
 				/* Prevent API spam if many channels are in the user's persist data */
 				await setTimeout(1000);
 				try {
-					console.log(x);
 					const permissions = {};
-					const deny = Object.entries(new PermissionsBitField(BigInt(Number(x[1]))).serialize()).filter((s) => s[1] === true).forEach((s) => permissions[s[0]] = false);
-					const allow = Object.entries(new PermissionsBitField(BigInt(Number(x[2]))).serialize()).filter((s) => s[1] === true).forEach((s) => permissions[s[0]] = true);
+					Object.entries(new PermissionsBitField(BigInt(Number(x[1]))).serialize()).filter((s) => s[1] === true).forEach((s) => permissions[s[0]] = false);
+					Object.entries(new PermissionsBitField(BigInt(Number(x[2]))).serialize()).filter((s) => s[1] === true).forEach((s) => permissions[s[0]] = true);
 					Object.keys(PermissionsBitField.Flags).forEach((flag) => {
 						if (!Object.keys(permissions).includes(flag)) permissions[flag] = null;
-						console.debug(`Set permissions.${flag} as null`);
 					});
-					console.debug(permissions, deny, allow);
 					member.guild.channels.cache.get(x[0]).permissionOverwrites.edit(member.id, permissions);
 					client.channels.cache.get(client.config.channels.permlog)
 						.send(`${Math.trunc(Date.now() / 60_000)}: Successfully restored permissions for M:<${member.user.tag} (${member.id})>: ${x[0]} -> d: ${x[1]}, a: ${x[2]}`);

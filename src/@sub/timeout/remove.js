@@ -16,7 +16,7 @@ export async function execute(interaction) {
 	const target = interaction.options.getMember('target', true);
 
 	if (!target.isCommunicationDisabled()) {
-		return await interaction.reply({
+		return await interaction.followUp({
 			content: 'That user is not timed out',
 			ephemeral: true,
 		});
@@ -53,7 +53,7 @@ export async function execute(interaction) {
 	}
 	catch (e) {
 		console.error(e);
-		await interaction.reply({
+		await interaction.followUp({
 			content: `Unable to remove timeout for user ${target.user.tag} (${target.id}) due to a lack of sufficient permissions`,
 			ephemeral: true,
 		});
@@ -69,5 +69,5 @@ export async function execute(interaction) {
 	case_.caseLogURL = msg.url;
 	await createCase(case_);
 	const embeds = [await modActionSuccessEmbed(case_)];
-	await interaction.reply({ embeds });
+	await interaction.followUp({ embeds });
 }

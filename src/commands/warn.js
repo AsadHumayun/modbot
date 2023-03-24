@@ -33,7 +33,7 @@ export default {
 		await createCase(caseData);
 
 		const embeds = [await modActionSuccessEmbed(caseData)];
-		await interaction.reply({
+		await interaction.followUp({
 			embeds,
 		});
 		await member.send({

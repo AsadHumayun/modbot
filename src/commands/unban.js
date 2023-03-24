@@ -23,7 +23,7 @@ export default {
 
 		const target = await getUser(targetId);
 		if (!target) {
-			return await interaction.reply({
+			return await interaction.followUp({
 				content: 'Unable to find a Discord user by that ID',
 				ephemeral: true,
 			});
@@ -61,6 +61,6 @@ export default {
 			.catch(() => {return;});
 		await client.guilds.cache.get(client.config.guildId).members.unban(target.id, `Unbanned by ${interaction.user.tag} (${interaction.user.id}) | Case #${case_.id}`);
 		const embeds = [await modActionSuccessEmbed(case_)];
-		await interaction.reply({ embeds });
+		await interaction.followUp({ embeds });
 	},
 };

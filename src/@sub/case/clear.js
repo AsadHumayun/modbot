@@ -14,7 +14,7 @@ export async function execute(interaction) {
 	});
 	const limit = interaction.options.getInteger('limit') || cases.count;
 	if (limit < 0) {
-		return await interaction.reply({
+		return await interaction.followUp({
 			content: '\'limit\' cannot be less than 0',
 			ephemeral: true,
 		});
@@ -51,7 +51,7 @@ export async function execute(interaction) {
 		},
 	});
 
-	await interaction.reply({
+	await interaction.followUp({
 		embeds: [
 			embed,
 		],

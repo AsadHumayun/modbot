@@ -14,7 +14,7 @@ export async function execute(interaction) {
 	});
 
 	if (!cases.length) {
-		return await interaction.reply({
+		return await interaction.followUp({
 			content: `No cases found for ${target.tag}`,
 			ephemeral: true,
 		});
@@ -41,5 +41,5 @@ export async function execute(interaction) {
 	history
 		.addFields(results);
 
-	await interaction.reply({ embeds: [history] });
+	await interaction.followUp({ embeds: [history] });
 }

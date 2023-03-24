@@ -22,7 +22,7 @@ export default {
 		const refs = interaction.options.getString('reference')?.split(',').join(';');
 
 		if (target.type !== ChannelType.GuildText) {
-			return await interaction.reply({
+			return await interaction.followUp({
 				content: `Invalid channel "${target.name}"; a valid channel must be of type GuildText. Received ${Object.entries(ChannelType).find((enumMember) => target.type === enumMember[1])[0]}`,
 				ephemeral: true,
 			});
@@ -61,6 +61,6 @@ export default {
 		case_.caseLogURL = await logCase(case_, [embed]);
 		await createCase(case_);
 		const embeds = [await modActionSuccessEmbed(case_)];
-		await interaction.reply({ embeds });
+		await interaction.followUp({ embeds });
 	},
 };

@@ -32,7 +32,7 @@ ${member.moderatable ? 'Moderatable' : 'Not Moderatable'}
 ${member.communicationDisabledUntil ? 'Communications Disabled' : ''}
 `;
 		// GuildMember
-		return await interaction.reply({
+		return await interaction.followUp({
 			embeds: [
 				new EmbedBuilder()
 					.setColor(member.displayHexColor)

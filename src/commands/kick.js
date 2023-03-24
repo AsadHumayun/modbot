@@ -19,7 +19,7 @@ export default {
 		const refs = interaction.options.getString('reference')?.split(',').join(';');
 
 		if (!target.manageable) {
-			return await interaction.reply({
+			return await interaction.followUp({
 				content: `Unable to kick ${target.user.tag}, lacking perissions`,
 				ephemeral: true,
 			});
@@ -44,6 +44,6 @@ export default {
 		await target.send({ embeds: [kick(target.user, interaction.user, interaction.guild, client.users.cache.get(client.config.display), case_)] });
 		await target.kick(reason);
 		const embeds = [await modActionSuccessEmbed(case_)];
-		await interaction.reply({ embeds });
+		await interaction.followUp({ embeds });
 	},
 };

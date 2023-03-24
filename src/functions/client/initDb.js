@@ -14,6 +14,7 @@ export async function initDb() {
 		host: 'localhost',
 		dialect: 'sqlite',
 		storage: join(process.cwd(), 'assets', 'db', 'database.sqlite'),
+		logQueryParameters: true,
 	});
 
 	const Cases = Case(sequelize);

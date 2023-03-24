@@ -21,7 +21,7 @@ export default {
 		const refs = interaction.options.getString('reference')?.split(',').join(';');
 
 		if (!target.manageable) {
-			return await interaction.reply({
+			return await interaction.followUp({
 				content: `Unable to ban ${target.user.tag}, lacking permissions`,
 				ephemeral: true,
 			});
@@ -57,6 +57,6 @@ export default {
 			days: 0,
 		});
 		const embeds = [await modActionSuccessEmbed(case_)];
-		await interaction.reply({ embeds });
+		await interaction.followUp({ embeds });
 	},
 };

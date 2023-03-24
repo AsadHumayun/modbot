@@ -30,7 +30,7 @@ export default {
 			days,
 			roles: roles || null,
 		});
-		const msg = await interaction.reply({
+		const msg = await interaction.followUp({
 			embeds: [
 				new EmbedBuilder()
 					.setColor(client.config.colors.red)

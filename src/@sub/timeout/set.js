@@ -34,7 +34,7 @@ export async function execute(interaction) {
 		await target.timeout(minutes * 60000, `Moderator: ${interaction.user.tag} (${interaction.user.id})\nReason: ${reason}`);
 	}
 	catch (e) {
-		await interaction.reply({
+		await interaction.followUp({
 			content: `Unable to timeout user ${target.user.tag} (${target.id}) due to a lack of sufficient permissions or invalid minutes specified`,
 			ephemeral: true,
 		});
@@ -58,7 +58,7 @@ export async function execute(interaction) {
 	case_.caseLogURL = msg.url;
 	await createCase(case_);
 	const embeds = [await modActionSuccessEmbed(case_)];
-	await interaction.reply({ embeds });
+	await interaction.followUp({ embeds });
 	target.send({
 		embeds: [timeout(target, interaction.user, interaction.guild, client.users.cache.get(client.config.display), case_)],
 	});

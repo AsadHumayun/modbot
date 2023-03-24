@@ -11,7 +11,7 @@ export default {
 	descriptor: 'A test command',
 	async execute(client, interaction) {
 		if (interaction.options.getString('command')) {
-			return await interaction.reply({
+			return await interaction.followUp({
 				content: 'Due to ESM constraints, this simply isn\'t possible. [(read more)](<https://github.com/nodejs/modules/issues/307>)',
 			});
 		}

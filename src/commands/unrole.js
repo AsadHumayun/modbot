@@ -23,7 +23,7 @@ export default {
 
 		await target.roles.remove(role.id)
 			.catch((err) => {
-				interaction.reply({
+				interaction.followUp({
 					embeds: [
 						new EmbedBuilder()
 							.setColor('Red')
@@ -63,6 +63,6 @@ export default {
 		case_.caseLogURL = await logCase(case_, [embed]);
 		await createCase(case_);
 		const embeds = [await modActionSuccessEmbed(case_)];
-		await interaction.reply({ embeds });
+		await interaction.followUp({ embeds });
 	},
 };

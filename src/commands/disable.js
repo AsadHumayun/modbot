@@ -10,7 +10,7 @@ export default {
 	moderator: true,
 	async execute(client, interaction) {
 		if (!interaction.member.permissions.has(PermissionsBitField.Flags.Administrator)) {
-			return await interaction.reply({
+			return await interaction.followUp({
 				content: 'You must have the `ADMINISTRATOR` permission in order to use this command!',
 				ephemeral: true,
 			});
@@ -24,7 +24,7 @@ export default {
 				disabled: true,
 			});
 
-			return await interaction.reply({
+			return await interaction.followUp({
 				embeds: [
 					new EmbedBuilder()
 						.setColor(client.config.colors.red)
@@ -48,7 +48,7 @@ export default {
 				},
 			});
 
-			return await interaction.reply({
+			return await interaction.followUp({
 				embeds: [
 					new EmbedBuilder()
 						.setColor(client.config.colors.green)

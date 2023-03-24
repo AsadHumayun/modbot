@@ -13,6 +13,8 @@ export default {
 	async execute(client, interaction) {
 		if (interaction.type !== InteractionType.ApplicationCommand) return;
 
+		await interaction.deferReply();
+
 		const command = client.commands.get(interaction.commandName) || client.commands.find((cmd) => cmd.aliases?.includes(interaction.commandName));
 		const slashCommandData = command.slashCommandData.toJSON();
 
@@ -33,7 +35,7 @@ export default {
 			};
 
 			if (!interaction.member.permissions.has(PermissionsBitField.Flags.Administrator) && !hasModRole()) {
-				return await interaction.reply({
+				return await interaction.followUp({
 					embeds: [
 						new EmbedBuilder()
 							.setColor(client.config.colors.orange)
@@ -48,7 +50,7 @@ export default {
 		if (slashCommandData.options.filter(({ type }) => type === 1).length >= 1) {
 			const { execute } = await import('file:///' + join(SUBCOMMAND_DIR, interaction.commandName, interaction.options.getSubcommand() + '.js'));
 			if (!execute) {
-				return await interaction.reply({
+				return await interaction.followUp({
 					content: `No subcommand with name "${interaction.options.getSubcommand()}" and parent command "${interaction.commandName}" was found.`,
 					ephemeral: true,
 				});
@@ -57,7 +59,7 @@ export default {
 				execute(interaction);
 			}
 			catch (e) {
-				interaction.reply({
+				interaction.followUp({
 					content: `Whoops, an error occurred :c\n\`${e}\``,
 					ephemeral: true,
 				});
@@ -70,7 +72,7 @@ export default {
 				command.execute(client, interaction);
 			}
 			catch (e) {
-				interaction.reply({
+				interaction.followUp({
 					content: `Whoops, an error occurred :c\n\`${e}\``,
 					ephemeral: true,
 				});
