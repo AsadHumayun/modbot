@@ -1,6 +1,5 @@
 import { join } from 'node:path';
-import { InteractionType } from 'discord.js';
-import { EmbedBuilder, PermissionsBitField } from 'discord.js';
+import { EmbedBuilder, PermissionsBitField, InteractionType } from 'discord.js';
 
 const SUBCOMMAND_DIR = join(process.cwd(), 'src', '@sub');
 
