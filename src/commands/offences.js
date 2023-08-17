@@ -3,7 +3,7 @@ import { getUserData } from '../functions/userData/getUserData.js';
 import { EmbedBuilder } from 'discord.js';
 
 /**
- * @type {import('../../types/command').Command}
+ * @type {import('../../types/Command').Command}
  */
 export default {
 	slashCommandData,
