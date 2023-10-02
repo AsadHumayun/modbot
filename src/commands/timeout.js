@@ -1,7 +1,7 @@
 import { TimeoutSlashCommandData as slashCommandData } from '../SlashCommandData/timeout.js';
 
 /**
- * @type {import('../../types/command').Command}
+ * @type {import('../../types/Command').Command}
  */
 export default {
 	slashCommandData,

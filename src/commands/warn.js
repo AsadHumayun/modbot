@@ -7,7 +7,7 @@ import { warn } from '../embeds/dmNotification/warn.js';
 import { logCase } from '../functions/case/logCase.js';
 
 /**
- * @type {import('../../types/command').Command}
+ * @type {import('../../types/Command').Command}
  */
 export default {
 	slashCommandData,

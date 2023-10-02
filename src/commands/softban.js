@@ -7,7 +7,7 @@ import { modActionSuccessEmbed } from '../functions/message/modActionSuccessEmbe
 import { SoftbanSlashCommandData as slashCommandData } from '../SlashCommandData/softban.js';
 
 /**
- * @type {import('../../types/command').Command}
+ * @type {import('../../types/Command').Command}
  */
 export default {
 	slashCommandData,

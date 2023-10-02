@@ -7,7 +7,7 @@ import { modActionSuccessEmbed } from '../functions/message/modActionSuccessEmbe
 import { KickSlashCommandData as slashCommandData } from '../SlashCommandData/kick.js';
 
 /**
- * @type {import('../../types/command').Command}
+ * @type {import('../../types/Command').Command}
  */
 export default {
 	slashCommandData,

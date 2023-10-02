@@ -2,7 +2,7 @@ import { TestSlashCommandData as slashCommandData } from '../SlashCommandData/te
 import { join } from 'node:path';
 
 /**
- * @type {import('../../types/command').Command}
+ * @type {import('../../types/Command').Command}
  */
 export default {
 	slashCommandData,

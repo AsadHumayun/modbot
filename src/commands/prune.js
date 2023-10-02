@@ -6,7 +6,7 @@ import { createCase } from '../functions/case/createCase.js';
 import { prune } from '../embeds/logger/prune.js';
 
 /**
- * @type {import('../../types/command').Command}
+ * @type {import('../../types/Command').Command}
  */
 export default {
 	slashCommandData,

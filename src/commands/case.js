@@ -1,7 +1,7 @@
 import { CaseSlashCommandData as slashCommandData } from '../SlashCommandData/case.js';
 
 /**
- * @type {import('../../types/command').Command}
+ * @type {import('../../types/Command').Command}
  */
 export default {
 	slashCommandData,

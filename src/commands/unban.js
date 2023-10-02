@@ -10,7 +10,7 @@ import { autoReference } from '../functions/case/autoReference.js';
 import { insertReference } from '../functions/case/insertRefs.js';
 
 /**
- * @type {import('../../types/command').Command}
+ * @type {import('../../types/Command').Command}
  */
 export default {
 	slashCommandData,
