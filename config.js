@@ -60,7 +60,7 @@ export default {
 		verified: '<:Verified:1084214745156030494>',
 		verifiedCDN: 'https://cdn.discordapp.com/attachments/985789702302994432/990371778327093268/Verified.png',
 	},
-	debugger: { '@link':'https://discord.com/api/webhooks/1084220836258513017/FRdg2tFlr2f5m2kwXQ6HJ60V3oKfgl0VsHtBa1w0h_mRUvPHd0OurqRiVWnSAu2-p7ME' },
+	debugger: { '@link':'Your_Webhook_Link_Here' },
 	ofncs: {
 		'1': [ 'Spam', 1 ],
 		'2': [ 'Excessive Mentions', 1 ],
